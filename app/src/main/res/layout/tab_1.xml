@@ -31,7 +31,6 @@
             android:text="title"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-
             android:textColor="@color/colorWhite"
             android:textSize="35sp"
             android:gravity="center" />

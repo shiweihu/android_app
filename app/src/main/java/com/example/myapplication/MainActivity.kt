@@ -104,7 +104,6 @@ class MainActivity : AppCompatActivity() {
                         val menuitem = gson.fromJson(json, TabFour::class.java)
                         MyApp.menuListL?.add(menuitem)
                     }
-
                 }
             }
         })

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<View.StickyScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:tag=""
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@mipmap/tab_title_background"
+        >
+        <ImageButton
+            android:id="@+id/act_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/close"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            />
+        <TextView
+            android:id="@+id/tab_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="title"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textColor="@color/colorWhite"
+            android:textSize="35sp"
+            android:gravity="center" />
+
+
+    </RelativeLayout>
+
+</View.StickyScrollView>

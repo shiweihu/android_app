@@ -13,10 +13,7 @@ import mode.TabOne
 import mode.TabThree
 import mode.TabTwo
 import mode.menuItem
-import table.activity.TabFourActivity
-import table.activity.TabOneActivity
-import table.activity.TabThreeActivity
-import table.activity.TabTwoActivity
+import table.activity.*
 
 
 class MenuFragment : Fragment() {
@@ -42,6 +39,11 @@ class MenuFragment : Fragment() {
         {
             myApp .menuListL?.get(i)?.title?.let { menuString.add(it) }
         }
+
+        menuString.add("tab5")
+
+
+
         view.findViewById<ListView>(R.id.listView).adapter = listAdapt(this,view.context,menuString,myApp.menuListL!!)
 
     }
@@ -73,6 +75,11 @@ class MenuFragment : Fragment() {
                 }else if(position == 3)
                 {
                     val intent = Intent(fragment.activity, TabFourActivity::class.java)
+                    fragment.activity?.startActivity(intent)
+                    fragment.activity?.overridePendingTransition(0,0)
+                }else if(position == 4)
+                {
+                    val intent = Intent(fragment.activity, TabFiveActivity::class.java)
                     fragment.activity?.startActivity(intent)
                     fragment.activity?.overridePendingTransition(0,0)
                 }
