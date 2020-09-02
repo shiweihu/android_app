@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@mipmap/background"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/main_ui_picture"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            />
+        <ImageButton
+            android:id="@+id/CALL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/call"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            />
+
+            <ImageButton
+                android:id="@+id/MenuBut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/menu_but"
+                android:layout_marginLeft="20dp"
+                >
+            </ImageButton>
+        <ImageButton
+            android:id="@+id/DownLoadBut"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@mipmap/download_but"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            >
+        </ImageButton>
+    </LinearLayout>
+</RelativeLayout>
+
+
+
+
+

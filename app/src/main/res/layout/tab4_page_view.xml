@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<View.StickyScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGreen"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        >
+        <LinearLayout
+            android:id="@+id/tips_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSprintGreen"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:tag="sticky"
+            android:orientation="vertical"
+            >
+            <ImageButton
+                android:id="@+id/tip_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/close"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                />
+            <TextView
+                android:id="@+id/tipTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:textColor="@color/colorBlack"
+                android:layout_marginTop="5dp"
+                android:text="asdasdasdasdasdasdasdasdasdasdasdasdasd"
+                />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSprintGreen"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            >
+            <TextView
+                android:id="@+id/tab4_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:layout_margin="10dp"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+</View.StickyScrollView>

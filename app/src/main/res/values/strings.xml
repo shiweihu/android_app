@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <!-- -->
+    <string name="cancelBut">NO</string>
+    <string name="okBut">YES</string>
+    <string name="urgencyText1">DO YOU NEED HELP?</string>
+    <string name="urgencyText2">IS THERE A CRISIS OCCURRING NOW?</string>
+    <string name="urgencyText3">ARE THERE IMMEDIATE CONCERNS FOR THE PERSON IN CRISIS</string>
+    <string name="shareFile">HealthCarerShareFile</string>
+    <string name="recordTitlepostcode">postcode:</string>
+    <string name="recordTitleGender">gender:</string>
+    <string name="recordTitleAge">Age:</string>
+    <string name="submitButText">Submit</string>
+    <string name="title">ARAFMI ILLAWARRA</string>
+    <string name="title1">Mental Health Carers</string>
+    <string name="title2">caring for carers</string>
+    <string name="emergency">emergency</string>
+    <string name="emergencyCall">+02 000</string>
+    <string name="male">male</string>
+    <string name="female">female</string>
+    <string name="tab1_but1_text">Assess The Sltuation</string>
+    <string name="tab1_but2_text">Resource For Carers</string>
+    <string name="download_title">full manual</string>
+    <string name="url_download_full_manual">http://192.168.124.8:8080/ARAFMIServe/downloadServlet?filename=FULL_FILE.pdf</string>
+    <string name="url_submit_info">http://192.168.124.8:8080/ARAFMIServe/privateInfo?gender=%s&amp;Age=%s&amp;postcode=%s</string>
+    <string name="url_menu_list">http://192.168.124.8:8080/ARAFMIServe/MenuContextServlet</string>
+</resources>
