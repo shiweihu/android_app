@@ -15,7 +15,7 @@ import androidx.viewpager.widget.ViewPager.OnPageChangeListener
 import com.example.myapplication.MyApplication
 import com.example.myapplication.R
 import functions.Tool
-import mode.TabFour
+import mode.menuItem
 
 
 class TabFourActivity : Activity() {
@@ -27,7 +27,7 @@ class TabFourActivity : Activity() {
     override fun onStart() {
         super.onStart()
         var myApp =  this.application as MyApplication
-        val tabfour = myApp.menuListL?.get(3) as TabFour
+        val tabfour = myApp.menuListL?.get(3) as menuItem
 
         var title = findViewById<TextView>(R.id.tab_title)
 

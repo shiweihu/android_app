@@ -8,7 +8,7 @@ import android.widget.*
 import com.example.myapplication.MyApplication
 import com.example.myapplication.R
 import functions.Tool
-import mode.TabTwo
+import mode.menuItem
 
 
 class TabTwoActivity: Activity() {
@@ -32,7 +32,7 @@ class TabTwoActivity: Activity() {
     {
         super.onStart()
         var myApp =  this.application as MyApplication
-        val TabTwo = myApp.menuListL?.get(1) as TabTwo
+        val TabTwo = myApp.menuListL?.get(1) as menuItem
         var tip =TabTwo?.tips
         var content =TabTwo?.content
         var title = TabTwo?.title
