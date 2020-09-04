@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
 
         var url = this.getString(R.string.url_menu_list)
         url = url.format(preferences.MenuListVersion)
-        Http.get().doGet(url,object: Response
+        Http.get().doGetWithDialog(this,url,object: Response
         {
             override fun notification(s: String?) {
                 if(s == null || s.equals("1"))
