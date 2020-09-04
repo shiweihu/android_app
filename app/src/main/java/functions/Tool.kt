@@ -7,9 +7,11 @@ import android.graphics.Typeface
 import android.net.Uri
 import android.text.Spannable
 import android.text.SpannableStringBuilder
+import android.text.TextPaint
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
+import android.text.style.UnderlineSpan
 import android.view.View
 import android.widget.Toast
 
@@ -48,15 +50,28 @@ class Tool {
                 val typeface_map = attribute[3].split("=")
                 val fontcolor_map = attribute[4].split("=")
                 var clickableSpan: ClickableSpan?=null
-                var colorSpan: ForegroundColorSpan?=  ForegroundColorSpan(Color.parseColor(fontcolor_map[1]))
+                var colorSpan: ForegroundColorSpan?=  ForegroundColorSpan(
+                    Color.parseColor(
+                        fontcolor_map[1]
+                    )
+                )
                 var fontSpan:StyleSpan = StyleSpan(Typeface.NORMAL)
+
 
                 when(typeface_map[1])
                 {
-                    "NORMAL"->{ fontSpan = StyleSpan(Typeface.NORMAL) }
-                    "BOLD_ITALIC"->{fontSpan = StyleSpan(Typeface.BOLD_ITALIC)}
-                    "BOLD"->{fontSpan = StyleSpan(Typeface.BOLD)}
-                    "ITALIC"->{fontSpan = StyleSpan(Typeface.ITALIC)}
+                    "NORMAL" -> {
+                        fontSpan = StyleSpan(Typeface.NORMAL)
+                    }
+                    "BOLD_ITALIC" -> {
+                        fontSpan = StyleSpan(Typeface.BOLD_ITALIC)
+                    }
+                    "BOLD" -> {
+                        fontSpan = StyleSpan(Typeface.BOLD)
+                    }
+                    "ITALIC" -> {
+                        fontSpan = StyleSpan(Typeface.ITALIC)
+                    }
                 }
 
 
@@ -69,6 +84,9 @@ class Tool {
                                 this@Tool.call(context, content_map[1])
 
                             }
+                            override fun updateDrawState(ds: TextPaint) {
+                                ds.setUnderlineText(false)
+                            }
                         }
 
                     }
@@ -77,12 +95,14 @@ class Tool {
                             override fun onClick(widget: View) {
                                 this@Tool.accessWeb(context, content_map[1])
                             }
-                        }
 
+                            override fun updateDrawState(ds: TextPaint) {
+                                ds.setUnderlineText(true)
+                            }
+                        }
                     }
                 }
                 style.append(title_map[1])
-                style.length
                 style.setSpan(
                     clickableSpan,
                     style.length - title_map[1].length,
@@ -101,8 +121,6 @@ class Tool {
                     style.length,
                     Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
                 )
-
-
                 index  = str.indexOf("\${", indexEnd)
                 if(index==-1)
                 {
