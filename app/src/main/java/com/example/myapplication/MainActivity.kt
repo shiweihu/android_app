@@ -81,12 +81,7 @@ class MainActivity : AppCompatActivity() {
         Http.get().doGet(url,object: Response
         {
             override fun notification(s: String?) {
-                if(s == null)
-                {
-                    //it means this request is disconnection
-                    return ;
-                }
-                if(s.equals("1"))
+                if(s == null || s.equals("1"))
                 {
                     parseData(preferences.MenuListData)
                 }else
