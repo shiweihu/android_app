@@ -1,6 +1,7 @@
 package com.example.myapplication
 
 import android.app.AlertDialog
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
@@ -17,6 +18,12 @@ import mode.*
 
 
 class MainActivity : AppCompatActivity() {
+
+    private val preferences by lazy {
+        val myapp = this?.application as MyApplication
+        myapp.preferences
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,48 +75,36 @@ class MainActivity : AppCompatActivity() {
 
     private fun requestMainUIData()
     {
-        val MyApp = this.application as MyApplication
+
         var url = this.getString(R.string.url_menu_list)
+        url = url.format(preferences.MenuListVersion)
         Http.get().doGet(url,object: Response
         {
             override fun notification(s: String?) {
-                val gson = Gson()
-                var strS =  s?.split("------------")
-                for(i in strS!!.indices)
+                if(s == null)
                 {
-                    if(i==0)
-                    {
-                       var json = strS.get(i)
-                        val menuitem = gson.fromJson(json, TabOne::class.java)
-                        MyApp.menuListL?.add(menuitem)
-                    }
-                    if(i==1)
-                    {
-                        var json = strS.get(i)
-                        val menuitem = gson.fromJson(json, TabTwo::class.java)
-                        MyApp.menuListL?.add(menuitem)
-                    }
-                    if(i==2)
-                    {
-                        var json = strS.get(i)
-                        val menuitem = gson.fromJson(json, TabThree::class.java)
-                        MyApp.menuListL?.add(menuitem)
-                    }
-                    if(i==3)
-                    {
-                        var json = strS.get(i)
-                        val menuitem = gson.fromJson(json, TabFour::class.java)
-                        MyApp.menuListL?.add(menuitem)
-                    }
-                    if(i==4)
-                    {
-                        var json = strS.get(i)
-                        val menuitem = gson.fromJson(json, TabFive::class.java)
-                        MyApp.menuListL?.add(menuitem)
-                    }
+                    //it means this request is disconnection
+                    return ;
+                }
+                if(s.equals("1"))
+                {
+                    parseData(preferences.MenuListData)
+                }else
+                {
+                    val json:String? = s
+                    parseData(s!!)
                 }
             }
         })
+    }
+    private fun parseData(json:String)
+    {
+        val MyApp = this.application as MyApplication
+        val gson = Gson()
+        val rp = gson.fromJson(json,responsePack::class.java)
+        MyApp.menuListL = rp.list
+        preferences.MenuListVersion = rp.version
+        preferences.MenuListData =  json
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

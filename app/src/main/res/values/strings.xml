@@ -10,7 +10,7 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
-    <!-- -->
+
     <string name="cancelBut">NO</string>
     <string name="okBut">YES</string>
     <string name="urgencyText1">DO YOU NEED HELP?</string>
@@ -31,7 +31,9 @@
     <string name="tab1_but1_text">Assess The Sltuation</string>
     <string name="tab1_but2_text">Resource For Carers</string>
     <string name="download_title">full manual</string>
+    <!-- 118.178.93.45:8080 -->
     <string name="url_download_full_manual">http://118.178.93.45:8080/ARAFMIServe/downloadServlet?filename=FULL_FILE.pdf</string>
     <string name="url_submit_info">http://118.178.93.45:8080/ARAFMIServe/privateInfo?gender=%s&amp;Age=%s&amp;postcode=%s</string>
-    <string name="url_menu_list">http://118.178.93.45:8080/ARAFMIServe/MenuContextServlet</string>
+    <string name="url_menu_list">http://118.178.93.45:8080/ARAFMIServe/MenuContextServlet?versions="%s"</string>
+
 </resources>

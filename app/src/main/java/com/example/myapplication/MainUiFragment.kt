@@ -21,7 +21,10 @@ import functions.Tool
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class MainUiFragment : Fragment() {
-    private val preferences by lazy { SharedPreferencesUtils(this.requireContext()) }
+    private val preferences by lazy {
+        val myapp = this.activity?.application as MyApplication
+        myapp.preferences
+    }
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,

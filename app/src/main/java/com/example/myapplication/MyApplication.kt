@@ -1,15 +1,16 @@
 package com.example.myapplication
 
 import android.app.Application
-import android.util.Log
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import mode.TabOne
-import mode.TabTwo
+import functions.SharedPreferencesUtils
 import mode.menuItem
 
 
 class MyApplication: Application() {
+
+    public val preferences by lazy { SharedPreferencesUtils(this.baseContext) }
+
+
+
     override fun onCreate()
     {
         super.onCreate();

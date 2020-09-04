@@ -1,4 +1,4 @@
-package com.example.myapplication
+package functions
 
 import java.util.concurrent.LinkedBlockingQueue
 import java.util.concurrent.ThreadPoolExecutor
@@ -14,14 +14,14 @@ class ThreadManager private constructor(){
         LinkedBlockingQueue<Runnable>())
     companion object
     {
-        public var instance:ThreadManager? = null
+        public var instance: ThreadManager? = null
         get()
         {
             if(field == null)
                 field = ThreadManager()
             return field
         }
-        fun get():ThreadManager
+        fun get(): ThreadManager
         {
             return instance!!
         }
