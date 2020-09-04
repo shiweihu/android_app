@@ -40,10 +40,6 @@ class MenuFragment : Fragment() {
             myApp .menuListL?.get(i)?.title?.let { menuString.add(it) }
         }
 
-        menuString.add("tab5")
-
-
-
         view.findViewById<ListView>(R.id.listView).adapter = listAdapt(this,view.context,menuString,myApp.menuListL!!)
 
     }

@@ -12,11 +12,8 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import functions.Http
 import functions.Response
-import mode.TabOne
-import mode.TabTwo
 import functions.Tool
-import mode.TabFour
-import mode.TabThree
+import mode.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -102,6 +99,12 @@ class MainActivity : AppCompatActivity() {
                     {
                         var json = strS.get(i)
                         val menuitem = gson.fromJson(json, TabFour::class.java)
+                        MyApp.menuListL?.add(menuitem)
+                    }
+                    if(i==4)
+                    {
+                        var json = strS.get(i)
+                        val menuitem = gson.fromJson(json, TabFive::class.java)
                         MyApp.menuListL?.add(menuitem)
                     }
                 }
