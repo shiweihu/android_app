@@ -3,7 +3,6 @@ package functions
 
 import View.ProgersssDialog
 import android.annotation.SuppressLint
-import android.app.ProgressDialog
 import android.content.Context
 import android.os.Handler
 import android.os.Message
@@ -21,19 +20,28 @@ interface Response {
 }
 
 class Http {
-    private data class SocketPack constructor(var response: Response?, var strData:String?)
+    private data class SocketPack constructor(var response: Response?, var strData: String?)
     {
 
     }
     var dialog:ProgersssDialog? = null
-    private val handler: Handler = @SuppressLint("HandlerLeak")
-    object : Handler() {
-        override fun handleMessage(msg: Message) {
-            var socketPack = msg.obj as SocketPack
-            socketPack?.response?.notification(socketPack.strData)
-            dialog?.dismiss()
-        }
+
+    private val handler = Handler { msg->
+        var socketPack = msg.obj as SocketPack
+        socketPack?.response?.notification(socketPack.strData)
+        dialog?.dismiss()
+        false
     }
+
+
+//    private val handler: Handler = @SuppressLint("HandlerLeak")
+//    object : Handler() {
+//        override fun handleMessage(msg: Message) {
+//            var socketPack = msg.obj as SocketPack
+//            socketPack?.response?.notification(socketPack.strData)
+//            dialog?.dismiss()
+//        }
+//    }
 
 
     fun doGet(httpurl: String, response: Response?) {
@@ -42,15 +50,15 @@ class Http {
         ThreadManager.get().execute(Runnable {
             val result = request(httpurl)
             var message = Message()
-            message.obj = SocketPack(response,result)
+            message.obj = SocketPack(response, result)
             handler.sendMessage(message)
         })
     }
-    fun doGetWithDialog(context:Context, httpurl: String, response: Response?)
+    fun doGetWithDialog(context: Context, httpurl: String, response: Response?)
     {
         dialog = ProgersssDialog(context)
         dialog?.show()
-        doGet(httpurl,response)
+        doGet(httpurl, response)
     }
 
     private fun request(httpurl: String): String? {
