@@ -100,21 +100,9 @@ class Http {
         } catch (e: IOException) {
             e.printStackTrace()
         } finally {
-            if (null != br) {
-                try {
-                    br.close()
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-            }
-            if (null != `is`) {
-                try {
-                    `is`.close()
-                } catch (e: IOException) {
-                    e.printStackTrace()
-                }
-            }
-            connection!!.disconnect()
+            br?.let { br.close() }
+            `is`?.let {  `is`.close() }
+            connection?.disconnect()
         }
         return result
     }
