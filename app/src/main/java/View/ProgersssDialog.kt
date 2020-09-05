@@ -12,7 +12,7 @@ import android.widget.TextView
 import com.example.myapplication.R
 
 
-class ProgersssDialog(context: Context) : Dialog(context, R.style.Widget_AppCompat_ProgressBar) {
+class ProgersssDialog(context: Context) : Dialog(context, R.style.Theme_AppCompat_Dialog) {
     private val img: ImageView
     private val txt: TextView
     fun setMsg(msg: String?) {

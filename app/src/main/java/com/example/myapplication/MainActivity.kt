@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import functions.Http
@@ -93,6 +94,17 @@ class MainActivity : AppCompatActivity() {
     }
     private fun parseData(json:String)
     {
+        if(json.isEmpty())
+        {
+            Toast.makeText(
+                this,
+                "disabile to connect server,program",
+                Toast.LENGTH_SHORT
+            ).show()
+            requestMainUIData()
+            return
+        }
+
         val MyApp = this.application as MyApplication
         val gson = Gson()
         val rp = gson.fromJson(json,responsePack::class.java)
