@@ -75,6 +75,11 @@ class MenuFragment : Fragment() {
                     val intent = Intent(fragment.activity, TabFiveActivity::class.java)
                     fragment.activity?.startActivity(intent)
                     fragment.activity?.overridePendingTransition(0,0)
+                }else if(position == 5)
+                {
+                    val intent = Intent(fragment.activity, TabSixActivity::class.java)
+                    fragment.activity?.startActivity(intent)
+                    fragment.activity?.overridePendingTransition(0,0)
                 }
             }
             return view
