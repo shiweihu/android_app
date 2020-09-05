@@ -86,7 +86,6 @@ class MainActivity : AppCompatActivity() {
                     parseData(preferences.MenuListData)
                 }else
                 {
-                    val json:String? = s
                     parseData(s!!)
                 }
             }
