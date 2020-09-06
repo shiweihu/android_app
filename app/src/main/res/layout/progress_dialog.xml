@@ -14,7 +14,6 @@
             android:id="@+id/progress_dialog_img"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="30dp"
             android:src="@mipmap/progress"/>
 
         <TextView
