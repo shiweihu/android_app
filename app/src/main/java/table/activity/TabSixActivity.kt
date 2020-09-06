@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.widget.ImageButton
 import android.widget.TextView
+
 import com.example.myapplication.MyApplication
 import com.example.myapplication.R
 import functions.Tool
