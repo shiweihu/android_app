@@ -5,65 +5,68 @@
     android:layout_height="match_parent"
     android:tag=""
     >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@color/colorGreen"
         >
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="@mipmap/tab_title_background"
-            >
+            android:background="@mipmap/tab_title_background">
+
             <ImageButton
                 android:id="@+id/act_close"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/close"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="25dp"
-                />
+                android:background="@mipmap/close" />
+
             <TextView
                 android:id="@+id/tab_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="title"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
+                android:gravity="center"
 
+                android:text="title"
                 android:textColor="@color/colorWhite"
-                android:textSize="35sp"
-                android:gravity="center" />
+                android:textSize="35sp" />
         </RelativeLayout>
+
         <LinearLayout
             android:id="@+id/tips_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorSprintGreen"
             android:layout_margin="20dp"
-            android:padding="10dp"
-            android:tag="sticky"
+            android:background="@color/colorSprintGreen"
             android:orientation="vertical"
-            >
+            android:padding="10dp"
+            android:tag="sticky">
+
             <ImageButton
                 android:id="@+id/tip_close"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/close"
-                android:layout_marginTop="5dp"
                 android:layout_marginLeft="5dp"
-                />
+                android:layout_marginTop="5dp"
+                android:background="@mipmap/close" />
+
             <TextView
                 android:id="@+id/tipTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:textColor="@color/colorBlack"
                 android:layout_marginTop="5dp"
-                android:text="asdasdasdasdasdasdasdasdasdasdasdasdasd"
-                />
+                android:text="This is tip information"
+                android:textColor="@color/colorBlack"
+                android:textSize="15sp" />
         </LinearLayout>
+
         <TextView
             android:id="@+id/tab2_content"
             android:layout_width="match_parent"
@@ -73,6 +76,7 @@
             android:textColor="@color/colorWhite"
             >
         </TextView>
+
         <Spinner
             android:id="@+id/tab2_DropDownBox"
             android:layout_width="wrap_content"
@@ -82,6 +86,7 @@
             android:layout_margin="5dp"
 
             />
+
         <TextView
             android:id="@+id/DropDownBox_content"
             android:layout_width="match_parent"

@@ -51,6 +51,7 @@ class TabTwoActivity: Activity() {
         findViewById<TextView>(R.id.tab2_content).text = Tool.get().functionText(this,content)
         findViewById<TextView>(R.id.tab2_content).movementMethod = LinkMovementMethod.getInstance()
         findViewById<TextView>(R.id.tipTextView).text = tip
+
         val DropDownBox_content = findViewById<TextView>(R.id.DropDownBox_content)
         val DropPinner = findViewById<Spinner>(R.id.tab2_DropDownBox)
         var itemList = listOf<String>(item1, item2, item3)

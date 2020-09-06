@@ -4,7 +4,9 @@ import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
+import android.view.View
 import android.widget.ImageButton
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.myapplication.MyApplication
 import com.example.myapplication.R
@@ -19,6 +21,10 @@ class TabSixActivity : Activity() {
         findViewById<ImageButton>(R.id.act_close).setOnClickListener { _ ->
             this@TabSixActivity.finish()
             overridePendingTransition(0, 0)
+        }
+        findViewById<ImageButton>(R.id.tip_close).setOnClickListener { _->
+            super.findViewById<LinearLayout>(R.id.tips_layout).tag = ""
+            super.findViewById<LinearLayout>(R.id.tips_layout).visibility = View.GONE
         }
     }
 

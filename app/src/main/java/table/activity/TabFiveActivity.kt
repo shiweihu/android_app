@@ -21,6 +21,11 @@ class TabFiveActivity : Activity() {
            this@TabFiveActivity.finish()
         overridePendingTransition(0, 0)
     }
+        findViewById<ImageButton>(R.id.tip_close).setOnClickListener { _->
+            super.findViewById<LinearLayout>(R.id.tips_layout).tag = ""
+            super.findViewById<LinearLayout>(R.id.tips_layout).visibility = View.GONE
+        }
+
 
 
     }

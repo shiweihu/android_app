@@ -34,6 +34,7 @@ class TabFourActivity : Activity() {
         title.text = tabfour.title?.replace("\n", "")
         val subtitle = findViewById<TextView>(R.id.tab_subhead)
         subtitle.text = tabfour.getDropDownBoxByIndex(0).title
+
         val close_but = findViewById<ImageButton>(R.id.act_close)
         close_but.setOnClickListener{ _->
             super.finish()
