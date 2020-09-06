@@ -19,8 +19,8 @@ class TabFiveActivity : Activity() {
 
        findViewById<ImageButton>(R.id.act_close).setOnClickListener {_ ->
            this@TabFiveActivity.finish()
-           overridePendingTransition(0, 0)
-       }
+        overridePendingTransition(0, 0)
+    }
 
 
     }
