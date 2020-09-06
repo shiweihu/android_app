@@ -43,7 +43,7 @@ class Tool {
                 indexEnd =  str.indexOf("}", index)
                 var funtion  = str.substring(index + 2, indexEnd)
 
-                val  attribute =  funtion.split(",")
+                val  attribute =  funtion.split("|")
                 val type_map=  attribute[0].split("=")
                 val title_map=  attribute[1].split("=")
                 val content_map=  attribute[2].split("=")
