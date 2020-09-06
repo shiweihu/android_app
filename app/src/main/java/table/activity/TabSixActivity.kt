@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
+
 import com.example.myapplication.MyApplication
 import com.example.myapplication.R
 import functions.Tool

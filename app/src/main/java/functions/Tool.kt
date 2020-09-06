@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.net.Uri
+import android.os.Debug
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.TextPaint
@@ -12,6 +13,7 @@ import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
 import android.text.style.UnderlineSpan
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 
@@ -44,6 +46,15 @@ class Tool {
                 var funtion  = str.substring(index + 2, indexEnd)
 
                 val  attribute =  funtion.split("|")
+                if(attribute.size != 5)
+                {
+                    //Log(Log.DEBUG,funtion)
+                    Log.e(Log.DEBUG.toString(),funtion)
+                    //it attribute is not equals to 5,it means this text with error,directly show this text.
+                    style.clear()
+                    style.append(str)
+                    return style
+                }
                 val type_map=  attribute[0].split("=")
                 val title_map=  attribute[1].split("=")
                 val content_map=  attribute[2].split("=")
