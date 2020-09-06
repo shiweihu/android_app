@@ -57,7 +57,7 @@
                 android:background="@mipmap/close" />
 
             <TextView
-                android:id="@+id/tabsix_tips_content"
+                android:id="@+id/tab_tips_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
@@ -68,16 +68,7 @@
 
 
         <TextView
-            android:id="@+id/tabsix_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:textSize="25sp"
-            android:textColor="@color/colorWhite"
-            />
-
-        <TextView
-            android:id="@+id/tabsix_content"
+            android:id="@+id/tab_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"

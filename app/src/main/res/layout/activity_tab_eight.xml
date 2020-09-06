@@ -38,46 +38,20 @@
                 android:textSize="35sp" />
         </RelativeLayout>
 
-        <LinearLayout
-            android:id="@+id/tips_layout"
-            android:layout_width="match_parent"
+
+
+        <Spinner
+            android:id="@+id/tab_DropDownBox"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="@color/colorSprintGreen"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:tag="sticky">
-
-            <ImageButton
-                android:id="@+id/tip_close"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:background="@mipmap/close" />
-
-            <TextView
-                android:id="@+id/tabsix_tips_content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="This is tip information"
-                android:textColor="@color/colorBlack"
-                android:textSize="15sp" />
-        </LinearLayout>
-
-
-        <TextView
-            android:id="@+id/tabsix_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:layout_margin="5dp"
-            android:textSize="25sp"
-            android:textColor="@color/colorWhite"
+
             />
 
         <TextView
-            android:id="@+id/tabsix_content"
+            android:id="@+id/DropDownBox_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"

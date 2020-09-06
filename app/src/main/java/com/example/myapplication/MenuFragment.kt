@@ -85,6 +85,21 @@ class MenuFragment : Fragment() {
                     val intent = Intent(fragment.activity, TabSevenActivity::class.java)
                     fragment.activity?.startActivity(intent)
                     fragment.activity?.overridePendingTransition(0,0)
+                }else if(position == 7)
+                {
+                    val intent = Intent(fragment.activity, TabEightActivity::class.java)
+                    fragment.activity?.startActivity(intent)
+                    fragment.activity?.overridePendingTransition(0,0)
+                }else if(position == 8)
+                {
+                    val intent = Intent(fragment.activity, TabNineActivity::class.java)
+                    fragment.activity?.startActivity(intent)
+                    fragment.activity?.overridePendingTransition(0,0)
+                }else if(position == 9)
+                {
+                    val intent = Intent(fragment.activity, TabTenActivity::class.java)
+                    fragment.activity?.startActivity(intent)
+                    fragment.activity?.overridePendingTransition(0,0)
                 }
             }
             return view

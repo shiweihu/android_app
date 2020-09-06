@@ -11,36 +11,34 @@ import com.example.myapplication.R
 import functions.Tool
 import mode.menuItem
 
-class TabSixActivity : Activity() {
+class TabTenActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tab_six)
+        setContentView(R.layout.activity_tab_ten)
 
         findViewById<ImageButton>(R.id.act_close).setOnClickListener { _ ->
-            this@TabSixActivity.finish()
+            this@TabTenActivity.finish()
             overridePendingTransition(0, 0)
         }
     }
-
-
 
     override fun onStart() {
         super.onStart()
 
         var myApp =  this.application as MyApplication
-        val tabsix = myApp.menuListL?.get(5) as menuItem
+        val tab = myApp.menuListL?.get(9) as menuItem
 
-        var tips = tabsix.tips
-        var title = tabsix.title
-        var content = tabsix.content
+        var tips = tab.tips
+        var title = tab.title
+        var content = tab.content
 
 
         findViewById<TextView>(R.id.tab_title).text = title
-        findViewById<TextView>(R.id.tabsix_tips_content).text = Tool.get().functionText(this,tips)
-        findViewById<TextView>(R.id.tabsix_content).text = Tool.get().functionText(this,content)
+        findViewById<TextView>(R.id.tab_tips_content).text = Tool.get().functionText(this,tips)
+        findViewById<TextView>(R.id.tab_content).text = Tool.get().functionText(this,content)
 
-        findViewById<TextView>(R.id.tabsix_tips_content).movementMethod = LinkMovementMethod.getInstance()
-        findViewById<TextView>(R.id.tabsix_content).movementMethod = LinkMovementMethod.getInstance()
+        findViewById<TextView>(R.id.tab_tips_content).movementMethod = LinkMovementMethod.getInstance()
+        findViewById<TextView>(R.id.tab_content).movementMethod = LinkMovementMethod.getInstance()
 
     }
 

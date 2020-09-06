@@ -27,7 +27,7 @@
                 android:background="@mipmap/close" />
 
             <TextView
-                android:id="@+id/tab_title1"
+                android:id="@+id/tab_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
