@@ -6,48 +6,143 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:background="@mipmap/background"
         >
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/main_ui_picture"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="10dp"
-            />
-        <ImageButton
-            android:id="@+id/CALL"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/call"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            />
-
-            <ImageButton
-                android:id="@+id/MenuBut"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@mipmap/menu_but"
-                android:layout_marginLeft="20dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+     <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#30000000"
+                android:layout_marginTop="10dp"
                 >
-            </ImageButton>
-        <ImageButton
-            android:id="@+id/DownLoadBut"
-            android:layout_width="match_parent"
-            android:layout_height="160dp"
-            android:background="@mipmap/download_but"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            >
-        </ImageButton>
-    </LinearLayout>
+                <ImageButton
+                    android:id="@+id/CALL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:background="@mipmap/mental_health_crisis" />
+                 <TextView
+                     android:id="@+id/CALL_TITLE"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_toRightOf="@+id/CALL"
+                     android:layout_centerVertical="true"
+                     android:layout_marginLeft="15dp"
+                     android:text="@string/CALL_TITLE"
+                     android:textColor="@color/colorWhite"
+                     android:textSize="20sp"
+                     />
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="#30000000"
+                >
+                <ImageButton
+                    android:id="@+id/MenuBut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:background="@mipmap/carers_resources">
+
+                </ImageButton>
+                <TextView
+                    android:id="@+id/menuBut_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/MenuBut"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/menu_list"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp"
+                    />
+            </RelativeLayout>
+
+         <RelativeLayout
+             android:layout_width="match_parent"
+             android:layout_height="150dp"
+             android:layout_marginTop="20dp"
+             android:layout_marginLeft="10dp"
+             android:layout_marginRight="10dp"
+             android:background="#30000000"
+             >
+             <ImageButton
+                 android:id="@+id/Tips"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_centerVertical="true"
+                 android:layout_marginLeft="20dp"
+                 android:background="@mipmap/tips">
+
+             </ImageButton>
+             <TextView
+                 android:id="@+id/tips_title"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_toRightOf="@+id/Tips"
+                 android:layout_centerVertical="true"
+                 android:layout_marginLeft="15dp"
+                 android:text="@string/tips"
+                 android:textColor="@color/colorWhite"
+                 android:textSize="20sp"
+                 />
+         </RelativeLayout>
+
+         <RelativeLayout
+             android:layout_width="match_parent"
+             android:layout_height="150dp"
+             android:layout_marginTop="20dp"
+             android:layout_marginLeft="10dp"
+             android:layout_marginRight="10dp"
+             android:background="#30000000"
+             >
+             <ImageButton
+                 android:id="@+id/contact"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_centerVertical="true"
+                 android:layout_marginLeft="20dp"
+                 android:background="@mipmap/contact_us">
+
+             </ImageButton>
+             <TextView
+                 android:id="@+id/contact_title"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_toRightOf="@+id/contact"
+                 android:layout_centerVertical="true"
+                 android:layout_marginLeft="15dp"
+                 android:text="@string/contact_us"
+                 android:textColor="@color/colorWhite"
+                 android:textSize="20sp"
+                 />
+         </RelativeLayout>
+
+
+     </LinearLayout>
+    </RelativeLayout>
+    </ScrollView>
 </RelativeLayout>
 
 

@@ -12,4 +12,20 @@
         <item>Over 60</item>
     </string-array>
 
+    <string-array name="grid_icon_array">
+        <item >during_crisis</item>
+        <item >the_next_step</item>
+        <item >involving_yourself</item>
+        <item >hospital_admissions</item>
+        <item >healthcare_rights_and_complaints</item>
+        <item >complaints_in_the_mental_health_setting</item>
+        <item >carers_crisis_plan</item>
+        <item >after_crisis</item>
+        <item >resources</item>
+        <item >financial_and_legal</item>
+        <!-- as many more as your heart desires -->
+    </string-array>
+
+
+
 </resources>

@@ -2,11 +2,13 @@ package com.example.myapplication
 
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import mode.menuItem
@@ -20,7 +22,7 @@ class MenuFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.list_view, container, false)
+        return inflater.inflate(R.layout.manu_ui, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -29,7 +31,7 @@ class MenuFragment : Fragment() {
         view.findViewById<ImageButton>(R.id.list_view_close).setOnClickListener { _->
             findNavController().navigate(R.id.action_MenuFragment_to_FirstFragment)
         }
-
+        view.findViewById<LinearLayout>(R.id.layout_id).background.alpha = 100
         var myApp =  this.activity?.application as MyApplication
         val menuString:MutableList<String> = ArrayList<String>()
         for(i in myApp.menuListL!!.indices)
@@ -37,19 +39,30 @@ class MenuFragment : Fragment() {
             myApp .menuListL?.get(i)?.title?.let { menuString.add(it) }
         }
 
-        view.findViewById<ListView>(R.id.listView).adapter = listAdapt(this,view.context,menuString,myApp.menuListL!!)
+        view.findViewById<GridView>(R.id.grid_menu).adapter = gridItemAdapt(this,view.context,menuString)
+
 
     }
-    private class listAdapt(val fragment:Fragment,val ctx: Context, val menuText:List<String>,val menuListL:MutableList<menuItem>):BaseAdapter()
+    private class gridItemAdapt(val fragment:Fragment,val ctx: Context, val menuText:List<String>):BaseAdapter()
     {
+        @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
             var view = convertView
+
+            val grid_icon_list =  ctx.resources.getStringArray(R.array.grid_icon_array)
             if( view == null)
             {
-                view =  LayoutInflater.from(ctx).inflate(R.layout.list_item_layout,null) as RelativeLayout
+                view =  LayoutInflater.from(ctx).inflate(R.layout.menu_grid_item,null) as RelativeLayout
             }
-            view.findViewById<TextView>(R.id.menuText).text = getItem(position)
-            view.findViewById<TextView>(R.id.menuText).setOnClickListener{
+
+            val icon_img =  view.findViewById<ImageView>(R.id.menu_icon)
+            val title_text = view.findViewById<TextView>(R.id.menu_title)
+
+
+            icon_img?.setImageResource(ctx.resources.getIdentifier(grid_icon_list[position], "mipmap", ctx.packageName))
+            title_text?.text = menuText[position].replace("\n", "")
+
+            view.setOnClickListener{_->
                 if(position ==0)
                 {
                     val intent = Intent(fragment.activity, TabOneActivity::class.java)
@@ -101,7 +114,9 @@ class MenuFragment : Fragment() {
                     fragment.activity?.startActivity(intent)
                     fragment.activity?.overridePendingTransition(0,0)
                 }
+
             }
+
             return view
         }
 

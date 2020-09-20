@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/MenuFragment"
         android:name="com.example.myapplication.MenuFragment"
-        tools:layout="@layout/list_view">
+        tools:layout="@layout/manu_ui">
         <action
             android:id="@+id/action_MenuFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />

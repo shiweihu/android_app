@@ -50,10 +50,11 @@ class MainUiFragment : Fragment() {
         view.findViewById<ImageButton>(R.id.MenuBut).setOnClickListener{_->
             findNavController().navigate(R.id.action_FirstFragment_to_MenuFragment)
         }
+        view.findViewById<ScrollView>(R.id.scrollview).background.alpha = 100
 
-        view.findViewById<ImageButton>(R.id.DownLoadBut).setOnClickListener { _->
-              this.DownloadFullManual();
-        }
+       // view.findViewById<ImageButton>(R.id.DownLoadBut).setOnClickListener { _->
+        //      this.DownloadFullManual();
+      //  }
 
     }
     private fun showErgencyDialog()
@@ -154,6 +155,7 @@ class MainUiFragment : Fragment() {
         //第四步：将适配器添加到下拉列表上
         //第四步：将适配器添加到下拉列表上
         gspinner.adapter = adapter
+
 
 
 //        gspinner.setOnItemSelectedListener(object: AdapterView.OnItemSelectedListener
