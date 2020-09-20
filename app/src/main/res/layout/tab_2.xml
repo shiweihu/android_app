@@ -7,10 +7,11 @@
     >
 
     <LinearLayout
+        android:id="@+id/background_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/colorGreen"
+        android:background="@mipmap/background"
         >
 
         <RelativeLayout
@@ -20,8 +21,8 @@
 
             <ImageButton
                 android:id="@+id/act_close"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="25dp"
                 android:background="@mipmap/close" />
@@ -51,8 +52,8 @@
 
             <ImageButton
                 android:id="@+id/tip_close"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
                 android:background="@mipmap/close" />
@@ -95,6 +96,5 @@
             android:textSize="25sp"
             android:textColor="@color/colorWhite"
             />
-
     </LinearLayout>
 </View.StickyScrollView>

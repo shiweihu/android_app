@@ -26,7 +26,7 @@ class TabTwoActivity: Activity() {
             super.findViewById<LinearLayout>(R.id.tips_layout).tag = ""
             super.findViewById<LinearLayout>(R.id.tips_layout).visibility = View.GONE
         }
-
+        findViewById<LinearLayout>(R.id.background_layout).background.alpha = 100
     }
     override fun onStart()
     {
