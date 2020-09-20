@@ -21,10 +21,6 @@ class TabOneActivity: Activity() {
              super.finish()
              overridePendingTransition(0, 0);
          }
-         findViewById<ImageButton>(R.id.tip_close).setOnClickListener { _->
-             super.findViewById<LinearLayout>(R.id.tips_layout).tag = ""
-             super.findViewById<LinearLayout>(R.id.tips_layout).visibility = View.GONE
-         }
 
          findViewById<ImageButton>(R.id.assess_but).setOnClickListener { _->
              showPictureDialog(R.mipmap.tab1_but1_image)
@@ -33,8 +29,7 @@ class TabOneActivity: Activity() {
          findViewById<ImageButton>(R.id.resource_but).setOnClickListener { _->
              showPictureDialog(R.mipmap.tab1_but2_image)
          }
-
-
+         findViewById<LinearLayout>(R.id.background_layout).background.alpha = 200
     }
     private fun showPictureDialog(img: Int)
     {
@@ -57,13 +52,12 @@ class TabOneActivity: Activity() {
         super.onStart()
 
         var myApp =  this.application as MyApplication
-        var tips = myApp.menuListL?.get(0)?.tips
+
         var text =  myApp.menuListL?.get(0)?.content
         var title = myApp.menuListL?.get(0)?.title
 
 
 
-        findViewById<TextView>(R.id.tipTextView).text = tips
         findViewById<TextView>(R.id.tab1_content).text = text
         findViewById<TextView>(R.id.tab_title).text = title
 

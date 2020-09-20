@@ -15,12 +15,14 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
         >
      <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:orientation="vertical">
             <RelativeLayout
+                android:id="@+id/mental_health_crisis"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginLeft="10dp"
@@ -41,15 +43,16 @@
                      android:layout_height="wrap_content"
                      android:layout_toRightOf="@+id/CALL"
                      android:layout_centerVertical="true"
-                     android:layout_marginLeft="15dp"
+                     android:layout_marginLeft="20dp"
                      android:text="@string/CALL_TITLE"
                      android:textColor="@color/colorWhite"
-                     android:textSize="20sp"
+                     android:textSize="40sp"
                      />
             </RelativeLayout>
 
 
             <RelativeLayout
+                android:id="@+id/carers_resources"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginTop="20dp"
@@ -72,14 +75,15 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/MenuBut"
                     android:layout_centerVertical="true"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="20dp"
                     android:text="@string/menu_list"
                     android:textColor="@color/colorWhite"
-                    android:textSize="20sp"
+                    android:textSize="40sp"
                     />
             </RelativeLayout>
 
          <RelativeLayout
+             android:id="@+id/carers_tips"
              android:layout_width="match_parent"
              android:layout_height="150dp"
              android:layout_marginTop="20dp"
@@ -102,14 +106,15 @@
                  android:layout_height="wrap_content"
                  android:layout_toRightOf="@+id/Tips"
                  android:layout_centerVertical="true"
-                 android:layout_marginLeft="15dp"
+                 android:layout_marginLeft="20dp"
                  android:text="@string/tips"
                  android:textColor="@color/colorWhite"
-                 android:textSize="20sp"
+                 android:textSize="40sp"
                  />
          </RelativeLayout>
 
          <RelativeLayout
+             android:id="@+id/contact_us"
              android:layout_width="match_parent"
              android:layout_height="150dp"
              android:layout_marginTop="20dp"
@@ -132,10 +137,10 @@
                  android:layout_height="wrap_content"
                  android:layout_toRightOf="@+id/contact"
                  android:layout_centerVertical="true"
-                 android:layout_marginLeft="15dp"
+                 android:layout_marginLeft="20dp"
                  android:text="@string/contact_us"
                  android:textColor="@color/colorWhite"
-                 android:textSize="20sp"
+                 android:textSize="40sp"
                  />
          </RelativeLayout>
 

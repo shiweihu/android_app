@@ -23,7 +23,8 @@
         android:layout_below="@+id/menu_icon"
         android:layout_centerHorizontal="true"
         android:text="aaaa"
-        android:textSize="15sp"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:gravity="center_horizontal" />
 
 </RelativeLayout>

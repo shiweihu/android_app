@@ -22,10 +22,8 @@ class TabThreeActivity : Activity() {
             super.finish()
             overridePendingTransition(0, 0);
         }
-        findViewById<ImageButton>(R.id.tip_close).setOnClickListener { _->
-            super.findViewById<LinearLayout>(R.id.tips_layout).tag = ""
-            super.findViewById<LinearLayout>(R.id.tips_layout).visibility = View.GONE
-        }
+
+
 
 
     }
@@ -45,7 +43,7 @@ class TabThreeActivity : Activity() {
             )
         }
         findViewById<TextView>(R.id.tab3_content).movementMethod = LinkMovementMethod.getInstance()
-        findViewById<TextView>(R.id.tipTextView).text = tip
+
 
     }
 }

@@ -43,14 +43,17 @@ class MainUiFragment : Fragment() {
             showDialogForSubmitInfo(view)
             //findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
-        view.findViewById<ImageButton>(R.id.CALL).setOnClickListener{_ ->
-            showErgencyDialog()
+        view.findViewById<RelativeLayout>(R.id.mental_health_crisis).setOnClickListener{_ -> showErgencyDialog()
         }
-
+        view.findViewById<ImageButton>(R.id.CALL).setOnClickListener{_ -> showErgencyDialog()
+        }
+        view.findViewById<RelativeLayout>(R.id.carers_resources).setOnClickListener{_->
+            findNavController().navigate(R.id.action_FirstFragment_to_MenuFragment)
+        }
         view.findViewById<ImageButton>(R.id.MenuBut).setOnClickListener{_->
             findNavController().navigate(R.id.action_FirstFragment_to_MenuFragment)
         }
-        view.findViewById<ScrollView>(R.id.scrollview).background.alpha = 100
+        view.findViewById<ScrollView>(R.id.scrollview).background.alpha = 200
 
        // view.findViewById<ImageButton>(R.id.DownLoadBut).setOnClickListener { _->
         //      this.DownloadFullManual();

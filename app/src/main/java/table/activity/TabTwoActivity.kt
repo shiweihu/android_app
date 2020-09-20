@@ -22,11 +22,8 @@ class TabTwoActivity: Activity() {
             super.finish()
             overridePendingTransition(0, 0);
         }
-        findViewById<ImageButton>(R.id.tip_close).setOnClickListener { _->
-            super.findViewById<LinearLayout>(R.id.tips_layout).tag = ""
-            super.findViewById<LinearLayout>(R.id.tips_layout).visibility = View.GONE
-        }
-        findViewById<LinearLayout>(R.id.background_layout).background.alpha = 100
+
+        findViewById<LinearLayout>(R.id.background_layout).background.alpha = 200
     }
     override fun onStart()
     {
@@ -50,7 +47,7 @@ class TabTwoActivity: Activity() {
         findViewById<TextView>(R.id.tab_title).text = title
         findViewById<TextView>(R.id.tab2_content).text = Tool.get().functionText(this,content)
         findViewById<TextView>(R.id.tab2_content).movementMethod = LinkMovementMethod.getInstance()
-        findViewById<TextView>(R.id.tipTextView).text = tip
+
 
         val DropDownBox_content = findViewById<TextView>(R.id.DropDownBox_content)
         val DropPinner = findViewById<Spinner>(R.id.tab2_DropDownBox)

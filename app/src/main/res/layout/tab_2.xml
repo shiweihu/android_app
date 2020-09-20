@@ -40,34 +40,6 @@
                 android:textSize="35sp" />
         </RelativeLayout>
 
-        <LinearLayout
-            android:id="@+id/tips_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="@color/colorSprintGreen"
-            android:orientation="vertical"
-            android:padding="10dp"
-            android:tag="sticky">
-
-            <ImageButton
-                android:id="@+id/tip_close"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:background="@mipmap/close" />
-
-            <TextView
-                android:id="@+id/tipTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="This is tip information"
-                android:textColor="@color/colorBlack"
-                android:textSize="15sp" />
-        </LinearLayout>
-
         <TextView
             android:id="@+id/tab2_content"
             android:layout_width="match_parent"

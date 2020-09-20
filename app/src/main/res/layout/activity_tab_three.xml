@@ -18,61 +18,35 @@
             >
             <ImageButton
                 android:id="@+id/act_close"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:background="@mipmap/close"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="30dp"
                 />
+
             <TextView
                 android:id="@+id/tab_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="title"
+
+                android:layout_above="@+id/act_close"
                 android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-
+                android:layout_marginBottom="-49dp"
+                android:gravity="center"
+                android:text="title"
                 android:textColor="@color/colorWhite"
-                android:textSize="35sp"
-                android:gravity="center" />
+                android:textSize="35sp" />
         </RelativeLayout>
-        <LinearLayout
-            android:id="@+id/tips_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorSprintGreen"
-            android:layout_margin="20dp"
-            android:padding="10dp"
-            android:tag="sticky"
-            android:orientation="vertical"
-            >
-            <ImageButton
-                android:id="@+id/tip_close"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@mipmap/close"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"
-                />
-            <TextView
-                android:id="@+id/tipTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:textColor="@color/colorBlack"
-                android:layout_marginTop="5dp"
-                android:text="asdasdasdasdasdasdasdasdasdasdasdasdasd"
-                />
-        </LinearLayout>
-
 
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorSprintGreen"
+            android:background="@color/colorWhite"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:layout_margin="5dp"
             >
             <TextView
                 android:id="@+id/tab3_content"
