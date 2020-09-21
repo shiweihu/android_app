@@ -28,7 +28,7 @@ class ProgersssDialog(context: Context) : Dialog(context, R.style.Theme_AppCompa
        //给图片添加动态效果
        val anim: Animation =
            AnimationUtils.loadAnimation(context, R.anim.loading_dialog_progressbar)
-       img?.setAnimation(anim)
+       img?.animation = anim
        txt?.setText(R.string.progressbar_dialog_txt)
        //dialog添加视图
        setContentView(view)

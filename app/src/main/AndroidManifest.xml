@@ -20,7 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="table.activity.TabTenActivity"></activity>
+        <activity android:name="table.activity.carer_tips"></activity>
+        <activity android:name="table.activity.TabTenActivity" />
         <activity android:name="table.activity.TabNineActivity" />
         <activity android:name="table.activity.TabNineMainActivity" />
         <activity android:name="table.activity.TabEightActivity" />

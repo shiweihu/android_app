@@ -59,74 +59,73 @@ class MenuFragment : Fragment() {
         @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
             var view = convertView
-
-            val grid_icon_list =  ctx.resources.getStringArray(R.array.grid_icon_array)
             if( view == null)
             {
+                val grid_icon_list =  ctx.resources.getStringArray(R.array.grid_icon_array)
                 view =  LayoutInflater.from(ctx).inflate(R.layout.menu_grid_item,null) as RelativeLayout
-            }
-
-            val icon_img =  view.findViewById<ImageView>(R.id.menu_icon)
-            val title_text = view.findViewById<TextView>(R.id.menu_title)
+                val icon_img =  view.findViewById<ImageView>(R.id.menu_icon)
+                val title_text = view.findViewById<TextView>(R.id.menu_title)
 
 
-            icon_img?.setImageResource(ctx.resources.getIdentifier(grid_icon_list[position], "mipmap", ctx.packageName))
-            title_text?.text = menuText[position].replace("\n", "")
+                icon_img?.setImageResource(ctx.resources.getIdentifier(grid_icon_list[position], "mipmap", ctx.packageName))
+                title_text?.text = menuText[position].replace("\n", "")
 
-            view.setOnClickListener{_->
-                if(position ==0)
-                {
-                    val intent = Intent(fragment.activity, TabOneActivity::class.java)
-                    fragment.activity?.startActivity(intent)
-                    fragment.activity?.overridePendingTransition(0,0)
-                }else if(position == 1)
-                {
-                    val intent = Intent(fragment.activity, TabTwoActivity::class.java)
-                    fragment.activity?.startActivity(intent)
-                    fragment.activity?.overridePendingTransition(0,0)
-                }else if(position == 2)
-                {
-                    val intent = Intent(fragment.activity, TabThreeActivity::class.java)
-                    fragment.activity?.startActivity(intent)
-                    fragment.activity?.overridePendingTransition(0,0)
-                }else if(position == 3)
-                {
-                    val intent = Intent(fragment.activity, TabFourActivity::class.java)
-                    fragment.activity?.startActivity(intent)
-                    fragment.activity?.overridePendingTransition(0,0)
-                }else if(position == 4)
-                {
-                    val intent = Intent(fragment.activity, TabFiveActivity::class.java)
-                    fragment.activity?.startActivity(intent)
-                    fragment.activity?.overridePendingTransition(0,0)
-                }else if(position == 5)
-                {
-                    val intent = Intent(fragment.activity, TabSixActivity::class.java)
-                    fragment.activity?.startActivity(intent)
-                    fragment.activity?.overridePendingTransition(0,0)
-                }else if(position == 6)
-                {
-                    val intent = Intent(fragment.activity, TabSevenActivity::class.java)
-                    fragment.activity?.startActivity(intent)
-                    fragment.activity?.overridePendingTransition(0,0)
-                }else if(position == 7)
-                {
-                    val intent = Intent(fragment.activity, TabEightActivity::class.java)
-                    fragment.activity?.startActivity(intent)
-                    fragment.activity?.overridePendingTransition(0,0)
-                }else if(position == 8)
-                {
-                    val intent = Intent(fragment.activity, TabNineActivity::class.java)
-                    fragment.activity?.startActivity(intent)
-                    fragment.activity?.overridePendingTransition(0,0)
-                }else if(position == 9)
-                {
-                    val intent = Intent(fragment.activity, TabTenActivity::class.java)
-                    fragment.activity?.startActivity(intent)
-                    fragment.activity?.overridePendingTransition(0,0)
+                view.setOnClickListener{_->
+                    if(position ==0)
+                    {
+                        val intent = Intent(fragment.activity, TabOneActivity::class.java)
+                        fragment.activity?.startActivity(intent)
+                        fragment.activity?.overridePendingTransition(0,0)
+                    }else if(position == 1)
+                    {
+                        val intent = Intent(fragment.activity, TabTwoActivity::class.java)
+                        fragment.activity?.startActivity(intent)
+                        fragment.activity?.overridePendingTransition(0,0)
+                    }else if(position == 2)
+                    {
+                        val intent = Intent(fragment.activity, TabThreeActivity::class.java)
+                        fragment.activity?.startActivity(intent)
+                        fragment.activity?.overridePendingTransition(0,0)
+                    }else if(position == 3)
+                    {
+                        val intent = Intent(fragment.activity, TabFourActivity::class.java)
+                        fragment.activity?.startActivity(intent)
+                        fragment.activity?.overridePendingTransition(0,0)
+                    }else if(position == 4)
+                    {
+                        val intent = Intent(fragment.activity, TabFiveActivity::class.java)
+                        fragment.activity?.startActivity(intent)
+                        fragment.activity?.overridePendingTransition(0,0)
+                    }else if(position == 5)
+                    {
+                        val intent = Intent(fragment.activity, TabSixActivity::class.java)
+                        fragment.activity?.startActivity(intent)
+                        fragment.activity?.overridePendingTransition(0,0)
+                    }else if(position == 6)
+                    {
+                        val intent = Intent(fragment.activity, TabSevenActivity::class.java)
+                        fragment.activity?.startActivity(intent)
+                        fragment.activity?.overridePendingTransition(0,0)
+                    }else if(position == 7)
+                    {
+                        val intent = Intent(fragment.activity, TabEightActivity::class.java)
+                        fragment.activity?.startActivity(intent)
+                        fragment.activity?.overridePendingTransition(0,0)
+                    }else if(position == 8)
+                    {
+                        val intent = Intent(fragment.activity, TabNineActivity::class.java)
+                        fragment.activity?.startActivity(intent)
+                        fragment.activity?.overridePendingTransition(0,0)
+                    }else if(position == 9)
+                    {
+                        val intent = Intent(fragment.activity, TabTenActivity::class.java)
+                        fragment.activity?.startActivity(intent)
+                        fragment.activity?.overridePendingTransition(0,0)
+                    }
                 }
-
             }
+
+
 
             return view
         }
