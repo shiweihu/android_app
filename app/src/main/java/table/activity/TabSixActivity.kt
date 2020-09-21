@@ -23,10 +23,7 @@ class TabSixActivity : Activity() {
             this@TabSixActivity.finish()
             overridePendingTransition(0, 0)
         }
-        findViewById<ImageButton>(R.id.tip_close).setOnClickListener { _->
-            super.findViewById<LinearLayout>(R.id.tips_layout).tag = ""
-            super.findViewById<LinearLayout>(R.id.tips_layout).visibility = View.GONE
-        }
+
     }
 
 
@@ -37,16 +34,16 @@ class TabSixActivity : Activity() {
         var myApp =  this.application as MyApplication
         val tabsix = myApp.menuListL?.get(5) as menuItem
 
-        var tips = tabsix.tips
+
         var title = tabsix.title
         var content = tabsix.content
 
 
         findViewById<TextView>(R.id.tab_title).text = title
-        findViewById<TextView>(R.id.tabsix_tips_content).text = Tool.get().functionText(this,tips)
+
         findViewById<TextView>(R.id.tabsix_content).text = Tool.get().functionText(this,content)
 
-        findViewById<TextView>(R.id.tabsix_tips_content).movementMethod = LinkMovementMethod.getInstance()
+
         findViewById<TextView>(R.id.tabsix_content).movementMethod = LinkMovementMethod.getInstance()
 
     }

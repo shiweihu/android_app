@@ -22,10 +22,7 @@ class TabSevenActivity : Activity() {
             this@TabSevenActivity.finish()
             overridePendingTransition(0, 0)
         }
-        findViewById<ImageButton>(R.id.tip_close).setOnClickListener { _->
-            super.findViewById<LinearLayout>(R.id.tips_layout).tag = ""
-            super.findViewById<LinearLayout>(R.id.tips_layout).visibility = View.GONE
-        }
+
     }
 
     override fun onStart() {
@@ -34,7 +31,7 @@ class TabSevenActivity : Activity() {
         var myApp =  this.application as MyApplication
         val tab = myApp.menuListL?.get(6) as menuItem
 
-        var tips = tab.tips
+
         var title = tab.title
         var content = tab.content
         var question1 = tab.getDropDownBoxByIndex(0).content
@@ -47,10 +44,10 @@ class TabSevenActivity : Activity() {
         var other = tab.getDropDownBoxByIndex(7).content
 
         findViewById<TextView>(R.id.tab_title).text = title
-        findViewById<TextView>(R.id.tab_tips_content).text = Tool.get().functionText(this,tips)
+
         findViewById<TextView>(R.id.tab_content).text = Tool.get().functionText(this,content)
 
-        findViewById<TextView>(R.id.tab_tips_content).movementMethod = LinkMovementMethod.getInstance()
+
         findViewById<TextView>(R.id.tab_content).movementMethod = LinkMovementMethod.getInstance()
 
         question1=question1?.replace("\n", "")

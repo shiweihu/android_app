@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/colorGreen"
+        android:background="@mipmap/background"
         >
 
         <RelativeLayout
@@ -53,9 +53,9 @@
             android:id="@+id/DropDownBox_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:textSize="25sp"
-            android:textColor="@color/colorWhite"
+            android:textSize="20sp"
+            android:layout_margin="10dp"
+            android:textColor="@color/colorBlack"
             />
 
     </LinearLayout>
