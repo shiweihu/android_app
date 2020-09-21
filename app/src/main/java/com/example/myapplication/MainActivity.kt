@@ -25,17 +25,18 @@ class MainActivity : AppCompatActivity() {
         myapp.preferences
     }
 
-
+    var closeBut:ImageButton? = null;
+    var title:TextView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
 
 
+        closeBut = findViewById<ImageButton>(R.id.closeBut)
+        title =  this.findViewById<TextView>(R.id.title)
 
 
-
-        requestMainUIData()
       //  val mHomeKeyReceiver = MyReceiver()
        // val homeFilter = IntentFilter()
        // homeFilter.addAction(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)
@@ -44,6 +45,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+
+        requestMainUIData()
 
     }
 

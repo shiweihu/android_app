@@ -35,6 +35,13 @@ class MainUiFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_first, container, false)
     }
 
+    override fun onStart() {
+        super.onStart()
+        val mainactivity =  this.activity as MainActivity
+        mainactivity.closeBut?.visibility = View.INVISIBLE
+        mainactivity.title?.text =  this.resources.getString(R.string.title)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -53,7 +60,7 @@ class MainUiFragment : Fragment() {
         view.findViewById<ImageButton>(R.id.MenuBut).setOnClickListener{_->
             findNavController().navigate(R.id.action_FirstFragment_to_MenuFragment)
         }
-        view.findViewById<ScrollView>(R.id.scrollview).background.alpha = 200
+        //view.findViewById<ScrollView>(R.id.scrollview).background.alpha = 200
 
        // view.findViewById<ImageButton>(R.id.DownLoadBut).setOnClickListener { _->
         //      this.DownloadFullManual();

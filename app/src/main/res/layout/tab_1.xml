@@ -83,9 +83,12 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:elevation="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/rectange_corner_white"
+        android:elevation="10dp"
         >
       <TextView
           android:id="@+id/tab1_content"
@@ -93,10 +96,7 @@
           android:layout_height="wrap_content"
           android:textSize="20sp"
           android:layout_margin="10dp"
-          android:background="@color/colorWhite"
-
           />
-
     </RelativeLayout>
 
 </LinearLayout>

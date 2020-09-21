@@ -27,11 +27,7 @@ class MenuFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        view.findViewById<ImageButton>(R.id.list_view_close).setOnClickListener { _->
-            findNavController().navigate(R.id.action_MenuFragment_to_FirstFragment)
-        }
-        view.findViewById<LinearLayout>(R.id.layout_id).background.alpha = 100
+        //view.findViewById<LinearLayout>(R.id.layout_id).background.alpha = 100
         var myApp =  this.activity?.application as MyApplication
         val menuString:MutableList<String> = ArrayList<String>()
         for(i in myApp.menuListL!!.indices)
@@ -39,8 +35,23 @@ class MenuFragment : Fragment() {
             myApp .menuListL?.get(i)?.title?.let { menuString.add(it) }
         }
 
+
+
+
         view.findViewById<GridView>(R.id.grid_menu).adapter = gridItemAdapt(this,view.context,menuString)
 
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val mainactivity =  this.activity as MainActivity
+        mainactivity.closeBut?.visibility = View.VISIBLE
+        mainactivity.closeBut?.setOnClickListener{ _->
+            findNavController().navigate(R.id.action_MenuFragment_to_FirstFragment)
+            mainactivity.closeBut?.visibility = View.INVISIBLE
+        }
+        mainactivity.title?.text = this.resources.getString(R.string.menu_list)
 
     }
     private class gridItemAdapt(val fragment:Fragment,val ctx: Context, val menuText:List<String>):BaseAdapter()

@@ -3,11 +3,13 @@ package table.activity
 import android.app.Activity
 import android.app.AlertDialog
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.*
 import com.example.myapplication.MyApplication
 import com.example.myapplication.R
+import functions.Tool
 
 
 class TabOneActivity: Activity() {
@@ -29,7 +31,7 @@ class TabOneActivity: Activity() {
          findViewById<ImageButton>(R.id.resource_but).setOnClickListener { _->
              showPictureDialog(R.mipmap.tab1_but2_image)
          }
-         findViewById<LinearLayout>(R.id.background_layout).background.alpha = 200
+         //findViewById<LinearLayout>(R.id.background_layout).background.alpha = 200
     }
     private fun showPictureDialog(img: Int)
     {
@@ -58,10 +60,10 @@ class TabOneActivity: Activity() {
 
 
 
-        findViewById<TextView>(R.id.tab1_content).text = text
+
         findViewById<TextView>(R.id.tab_title).text = title
-
-
+        findViewById<TextView>(R.id.tab1_content).text= Tool.get().functionText(this,text!!)
+        findViewById<TextView>(R.id.tab1_content).movementMethod = LinkMovementMethod.getInstance()
 
     }
 

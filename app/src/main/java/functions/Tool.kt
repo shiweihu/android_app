@@ -96,7 +96,7 @@ class Tool {
 
                             }
                             override fun updateDrawState(ds: TextPaint) {
-                                ds.setUnderlineText(false)
+                                ds.setUnderlineText(true)
                             }
                         }
 
@@ -106,7 +106,6 @@ class Tool {
                             override fun onClick(widget: View) {
                                 this@Tool.accessWeb(context, content_map[1])
                             }
-
                             override fun updateDrawState(ds: TextPaint) {
                                 ds.setUnderlineText(true)
                             }

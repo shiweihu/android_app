@@ -6,23 +6,18 @@
     android:orientation="vertical"
     android:background="@mipmap/background"
     >
-    <ImageButton
-        android:id="@+id/list_view_close"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@mipmap/close"
-        />
+
     <GridView
         android:id="@+id/grid_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
         android:gravity="center"
         android:numColumns="2"
-        android:horizontalSpacing="20dp"
-        android:verticalSpacing="20dp"
+        android:horizontalSpacing="10dp"
+        android:verticalSpacing="10dp"
         android:layout_marginBottom="20dp"
         >
     </GridView>

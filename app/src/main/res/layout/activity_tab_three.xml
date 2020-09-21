@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<View.StickyScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:tag=""
     >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/background"
+        >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/colorGreen"
         >
         <RelativeLayout
             android:layout_width="match_parent"
@@ -42,8 +45,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorWhite"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_margin="5dp"
@@ -59,4 +61,5 @@
         </RelativeLayout>
 
     </LinearLayout>
-</View.StickyScrollView>
+    </ScrollView>
+</LinearLayout>
