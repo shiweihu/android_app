@@ -16,6 +16,7 @@ import android.text.style.UnderlineSpan
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import table.activity.TabTwoActivity
 
 
 class Tool {
@@ -96,7 +97,7 @@ class Tool {
 
                             }
                             override fun updateDrawState(ds: TextPaint) {
-                                ds.setUnderlineText(true)
+                                ds.isUnderlineText = true
                             }
                         }
 
@@ -107,18 +108,29 @@ class Tool {
                                 this@Tool.accessWeb(context, content_map[1])
                             }
                             override fun updateDrawState(ds: TextPaint) {
-                                ds.setUnderlineText(true)
+                                ds.isUnderlineText = true
+                            }
+                        }
+                    }
+                    "100"->
+                    {
+                        clickableSpan = object : ClickableSpan() {
+                            override fun onClick(widget: View) {
+                                this@Tool.gotoTheNextStep(context)
+                            }
+                            override fun updateDrawState(ds: TextPaint) {
+                                ds.isUnderlineText = true
                             }
                         }
                     }
                 }
                 style.append(title_map[1])
-                style.setSpan(
+                clickableSpan?.let {  style.setSpan(
                     clickableSpan,
                     style.length - title_map[1].length,
                     style.length,
                     Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-                )
+                ) }
                 style.setSpan(
                     colorSpan,
                     style.length - title_map[1].length,
@@ -164,6 +176,12 @@ class Tool {
            ).show()
        }
    }
+    public fun gotoTheNextStep(context: Context)
+    {
+        val intent = Intent(context, TabTwoActivity::class.java)
+        context?.startActivity(intent)
+       // context?.overridePendingTransition(0,0)
+    }
 
 
     companion object {

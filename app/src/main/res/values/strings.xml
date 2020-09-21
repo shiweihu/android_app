@@ -16,9 +16,10 @@
     <string name="contact_us">Contact Us</string>
     <string name="cancelBut">NO</string>
     <string name="okBut">YES</string>
-    <string name="urgencyText1">DO YOU NEED HELP?</string>
-    <string name="urgencyText2">IS THERE A CRISIS OCCURRING NOW?</string>
-    <string name="urgencyText3">ARE THERE IMMEDIATE CONCERNS FOR THE PERSON IN CRISIS</string>
+    <string name="urgencyText1">Are there safety concerns for you or others?</string>
+    <string name="urgencyText2">Are there immediate concerns for the person in Crisis?</string>
+    <string name="urgencyText3">You need to stay with your loved one and call 000 immediately and ask for an Ambulance</string>
+    <string name="urgencyText4">You can stay with your loved one until you establish ${type=100|title=the next step|content= |typeface=ITALIC|fontcolor=#000000}.</string>
     <string name="shareFile">HealthCarerShareFile</string>
     <string name="recordTitlepostcode">postcode:</string>
     <string name="recordTitleGender">gender:</string>

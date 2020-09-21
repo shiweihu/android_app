@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.method.LinkMovementMethod
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -15,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import functions.Http
 import functions.Response
 import functions.Tool
+import table.activity.TabTwoActivity
 
 
 /**
@@ -81,7 +83,19 @@ class MainUiFragment : Fragment() {
 
         val cancelBut = dialogView.findViewById<TextView>(R.id.cancel)
         cancelBut.setOnClickListener{_->
-            dialog?.dismiss()
+            //dialog?.dismiss()
+            var tag = dialogView.getTag()
+            if(tag!=3)
+            {
+                urgencyText.text = this@MainUiFragment.context?.let { Tool.get().functionText(it,this.getString(R.string.urgencyText4)) }
+                urgencyText.movementMethod = LinkMovementMethod.getInstance()
+                dialogView.setTag(3)
+            }else
+            {
+                dialog?.dismiss()
+            }
+
+
         }
         val okBut = dialogView.findViewById<TextView>(R.id.ok)
         okBut.setOnClickListener{_->
@@ -103,6 +117,10 @@ class MainUiFragment : Fragment() {
                     // }
                     this@MainUiFragment.context?.let { Tool.get().call(it,this.getString(R.string.emergencyCall)) }
                     dialog?.dismiss()
+                }
+                3->{
+                    dialog?.dismiss()
+                    this@MainUiFragment.context?.let { Tool.get().gotoTheNextStep(it) }
                 }
             }
         }
@@ -202,6 +220,7 @@ class MainUiFragment : Fragment() {
             {
                 "male" -> gender= "1"
                 "female" -> gender = "0"
+                "others"-> gender="2"
             }
 
             when(age)

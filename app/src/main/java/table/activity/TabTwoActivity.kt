@@ -44,55 +44,12 @@ class TabTwoActivity: Activity() {
         var title = TabTwo?.title
         title = title?.replace("\n", "")
 
-
-
-
-
-
         findViewById<TextView>(R.id.tab_title).text = title
-        //findViewById<TextView>(R.id.tab2_content).text = Tool.get().functionText(this, content)
-        //findViewById<TextView>(R.id.tab2_content).movementMethod = LinkMovementMethod.getInstance()
 
         val listView = findViewById<ListView>(R.id.list_view)
 
         listView.adapter =ListItemAdapt(this,TabTwo)
 
-
-/*
-        val DropDownBox_content = findViewById<TextView>(R.id.DropDownBox_content)
-        val DropPinner = findViewById<Spinner>(R.id.tab2_DropDownBox)
-        var itemList = listOf<String>(item1, item2, item3)
-        var adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, itemList)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        DropPinner.adapter = adapter
-        DropPinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                var context:String = ""
-                if(position == 0 ) {
-                   context = item1_content
-
-                }
-                if(position == 1 ) {
-                    context = item2_content
-
-                }
-                if(position == 2 ) {
-                    context = item3_content
-                }
-                DropDownBox_content.text = Tool.get().functionText(this@TabTwoActivity,context)
-                DropDownBox_content.movementMethod = LinkMovementMethod.getInstance()
-            }
-        }
-    }
-    */
     }
 
     private class ListItemAdapt(val ctx: Context, val data:menuItem):BaseAdapter()
