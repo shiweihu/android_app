@@ -15,7 +15,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="@mipmap/tab_title_background">
+            android:background="@mipmap/title_image">
 
             <ImageButton
                 android:id="@+id/act_close"
@@ -31,11 +31,12 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:gravity="center"
-
+                android:gravity="center|center_horizontal|center_vertical"
                 android:text="title"
                 android:textColor="@color/colorWhite"
-                android:textSize="35sp" />
+                android:textSize="30sp"
+                android:textStyle="bold"
+                />
         </RelativeLayout>
 
 
@@ -63,15 +64,27 @@
             android:layout_margin="5dp"
 
             />
-
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rectange_corner_white"
+            android:elevation="10dp"
+            >
         <TextView
             android:id="@+id/DropDownBox_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:textSize="25sp"
-            android:textColor="@color/colorWhite"
+            android:textColor="@color/colorBlack"
+
+
             />
+        </RelativeLayout>
     </LinearLayout>
     -->
     </LinearLayout>

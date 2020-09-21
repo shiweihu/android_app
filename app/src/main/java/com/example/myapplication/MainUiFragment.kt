@@ -153,7 +153,7 @@ class MainUiFragment : Fragment() {
             LayoutInflater.from(view.context).inflate(R.layout.user_info_dialog, null)
         val dialog: AlertDialog = AlertDialog.Builder(view.context)
             .create()
-        dialog.setTitle("write your information")
+        dialog.setTitle("Enter Your Information To Use Our APP")
         dialog.setCancelable(false)
         dialog.setView(dialogView)
         dialog.show()
@@ -202,6 +202,7 @@ class MainUiFragment : Fragment() {
             {
                 "male" -> gender= "1"
                 "female" -> gender = "0"
+                "others" -> gender = "2"
             }
 
             when(age)

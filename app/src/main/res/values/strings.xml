@@ -20,8 +20,8 @@
     <string name="urgencyText2">IS THERE A CRISIS OCCURRING NOW?</string>
     <string name="urgencyText3">ARE THERE IMMEDIATE CONCERNS FOR THE PERSON IN CRISIS</string>
     <string name="shareFile">HealthCarerShareFile</string>
-    <string name="recordTitlepostcode">postcode:</string>
-    <string name="recordTitleGender">gender:</string>
+    <string name="recordTitlepostcode">Postcode:</string>
+    <string name="recordTitleGender">Gender:</string>
     <string name="recordTitleAge">Age:</string>
     <string name="submitButText">Submit</string>
     <string name="title">ARAFMI ILLAWARRA</string>
@@ -31,6 +31,7 @@
     <string name="emergencyCall">000</string>
     <string name="male">male</string>
     <string name="female">female</string>
+    <string name="others">others</string>
     <string name="tab1_but1_text">Assess The Sltuation</string>
     <string name="tab1_but2_text">Resource For Carers</string>
     <string name="download_title">full manual</string>

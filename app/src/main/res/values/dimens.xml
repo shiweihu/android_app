@@ -3,6 +3,7 @@
     <string-array name="gender">
         <item>male</item>
         <item>female</item>
+        <item>others</item>
     </string-array>
 
     <string-array name="ageGroup">

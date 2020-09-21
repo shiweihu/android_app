@@ -11,6 +11,8 @@
     android:layout_alignParentLeft="true"
     android:layout_marginLeft="10dp"
     android:textColor="@color/colorWhite"
+    android:layout_gravity="center"
+
     />
 
 </RelativeLayout>
