@@ -24,13 +24,9 @@ class TabOneActivity: Activity() {
              overridePendingTransition(0, 0);
          }
 
-         findViewById<ImageButton>(R.id.assess_but).setOnClickListener { _->
-             showPictureDialog(R.mipmap.tab1_but1_image)
-         }
 
-         findViewById<ImageButton>(R.id.resource_but).setOnClickListener { _->
-             showPictureDialog(R.mipmap.tab1_but2_image)
-         }
+
+
          //findViewById<LinearLayout>(R.id.background_layout).background.alpha = 200
     }
     private fun showPictureDialog(img: Int)

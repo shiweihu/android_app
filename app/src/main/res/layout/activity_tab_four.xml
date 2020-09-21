@@ -14,7 +14,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@mipmap/tab_title_background"
+            android:background="@mipmap/title_image"
             >
             <TextView
                 android:id="@+id/tab_title"

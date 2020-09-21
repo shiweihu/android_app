@@ -3,7 +3,7 @@
 <!-- 背景色 -->
 <solid android:color="#00000000"/>
 <!-- 边框色 -->
-<stroke android:width="1dip" android:color="#FFFFFF" />
+<stroke android:width="1dip" android:color="#000000" />
 
 </shape>
 

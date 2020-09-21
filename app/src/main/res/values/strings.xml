@@ -21,8 +21,8 @@
     <string name="urgencyText3">You need to stay with your loved one and call 000 immediately and ask for an Ambulance</string>
     <string name="urgencyText4">You can stay with your loved one until you establish ${type=100|title=the next step|content= |typeface=ITALIC|fontcolor=#000000}.</string>
     <string name="shareFile">HealthCarerShareFile</string>
-    <string name="recordTitlepostcode">postcode:</string>
-    <string name="recordTitleGender">gender:</string>
+    <string name="recordTitlepostcode">Postcode:</string>
+    <string name="recordTitleGender">Gender:</string>
     <string name="recordTitleAge">Age:</string>
     <string name="submitButText">Submit</string>
     <string name="title">ARAFMI ILLAWARRA</string>
@@ -32,6 +32,7 @@
     <string name="emergencyCall">000</string>
     <string name="male">male</string>
     <string name="female">female</string>
+    <string name="others">others</string>
     <string name="tab1_but1_text">Assess The Sltuation</string>
     <string name="tab1_but2_text">Resource For Carers</string>
     <string name="download_title">full manual</string>

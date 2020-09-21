@@ -16,7 +16,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="@mipmap/tab_title_background">
+            android:background="@mipmap/title_image">
 
             <ImageButton
                 android:id="@+id/act_close"

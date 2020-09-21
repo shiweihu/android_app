@@ -21,10 +21,6 @@ class TabFiveActivity : Activity() {
            this@TabFiveActivity.finish()
         overridePendingTransition(0, 0)
     }
-        findViewById<ImageButton>(R.id.tip_close).setOnClickListener { _->
-            super.findViewById<LinearLayout>(R.id.tips_layout).tag = ""
-            super.findViewById<LinearLayout>(R.id.tips_layout).visibility = View.GONE
-        }
 
 
 
@@ -36,12 +32,12 @@ class TabFiveActivity : Activity() {
         var myApp =  this.application as MyApplication
         val tabfive = myApp.menuListL?.get(4) as menuItem
 
-        var tips = tabfive.tips
+
         var title = tabfive.title
 
 
         findViewById<TextView>(R.id.tab_title).text = title
-        findViewById<TextView>(R.id.tipTextView).text = tips
+
 
 
         var item1 =  tabfive.getDropDownBoxByIndex(0).title
