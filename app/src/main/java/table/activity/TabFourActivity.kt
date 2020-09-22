@@ -1,17 +1,15 @@
 package table.activity
 
 import android.app.Activity
+import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager.widget.ViewPager
-import androidx.viewpager.widget.ViewPager.OnPageChangeListener
+import android.view.*
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
+import android.widget.*
+import androidx.annotation.RequiresApi
 import com.example.myapplication.MyApplication
 import com.example.myapplication.R
 import functions.Tool
@@ -21,6 +19,10 @@ import mode.menuItem
 class TabFourActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?)  {
         super.onCreate(savedInstanceState)
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        this.getWindow().setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_tab_four)
     }
 
@@ -32,71 +34,81 @@ class TabFourActivity : Activity() {
         var title = findViewById<TextView>(R.id.tab_title)
 
         title.text = tabfour.title?.replace("\n", "")
-        val subtitle = findViewById<TextView>(R.id.tab_subhead)
-        subtitle.text = tabfour.getDropDownBoxByIndex(0).title
+       // val subtitle = findViewById<TextView>(R.id.tab_subhead)
+        //subtitle.text = tabfour.getDropDownBoxByIndex(0).title
 
         val close_but = findViewById<ImageButton>(R.id.act_close)
         close_but.setOnClickListener{ _->
             super.finish()
             overridePendingTransition(0, 0);
         }
-        val viewpage = findViewById<ViewPager>(R.id.vpGoods)
-        viewpage.adapter = object : PagerAdapter() {
-            override fun getCount(): Int {
-                return tabfour.getList().size
-            }
 
-            override fun isViewFromObject(view: View, `object`: Any): Boolean {
-                return view == `object`
-            }
-            override fun instantiateItem(container: ViewGroup, position: Int): Any {
+        val listView = findViewById<ListView>(R.id.list_view)
 
-                val dbox = tabfour.getDropDownBoxByIndex(position)
-                val view = LayoutInflater.from(this@TabFourActivity).inflate(
-                    R.layout.tab4_page_view,
-                    null
-                )
-                view.findViewById<ImageButton>(R.id.tip_close).setOnClickListener{ _->
-                    view.findViewById<LinearLayout>(R.id.tips_layout).tag = ""
-                    view.findViewById<LinearLayout>(R.id.tips_layout).visibility = View.GONE
-                }
-                view.findViewById<TextView>(R.id.tipTextView).text = dbox.tips
-                if(dbox.tips.isEmpty())
-                {
-                    view.findViewById<LinearLayout>(R.id.tips_layout).tag = ""
-                    view.findViewById<LinearLayout>(R.id.tips_layout).visibility = View.GONE
-                }
-                view.findViewById<TextView>(R.id.tab4_content).text =  Tool.get().functionText(this@TabFourActivity,dbox.content)
-                view.findViewById<TextView>(R.id.tab4_content).movementMethod = LinkMovementMethod.getInstance()
-                container.addView(view)
-                return view
-            }
-            override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
-                val view: View? = `object` as View?
-                container.removeView(view)
-            }
-        }
-
-
-        viewpage.addOnPageChangeListener(object : OnPageChangeListener {
-            override fun onPageScrolled(
-                position: Int,
-                positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-
-            }
-
-            override fun onPageSelected(position: Int) {
-                subtitle.text = tabfour.getDropDownBoxByIndex(position).title
-            }
-
-            override fun onPageScrollStateChanged(state: Int) {
-
-            }
-        })
-
+        listView.adapter = ListItemAdapt(this, tabfour)
 
 
     }
+
+    private class ListItemAdapt(val ctx: Context, val data:menuItem): BaseAdapter()
+    {
+        override fun getCount(): Int {
+            return data.getList().size
+        }
+
+        override fun getItem(p0: Int): Any {
+            return data.getDropDownBoxByIndex(p0)
+        }
+
+        override fun getItemId(p0: Int): Long {
+            return 0L
+        }
+        @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
+        override fun getView(position: Int, p1: View?, p2: ViewGroup?): View {
+            var view:View? = p1
+            if(view== null)
+            {
+                val ddb = data.getDropDownBoxByIndex(position)
+                view =  LayoutInflater.from(ctx).inflate(R.layout.carers_tips_item,null) as RelativeLayout
+                val title = view.findViewById<TextView>(R.id.title_view)
+                val tag = view.findViewById<ImageView>(R.id.showUp_tag)
+                val content_text_view = view .findViewById<TextView>(R.id.content_text_view)
+                tag.tag = 0
+                //
+                title.text = ddb.title
+                view.setOnClickListener{view->
+                    if(tag.tag == 0)
+                    {
+                        tag.tag = 1
+                        view.findViewById<LinearLayout>(R.id.content_layout).visibility =View.VISIBLE
+                        content_text_view.textSize = 20.0F
+                        content_text_view.text =  Tool.get().functionText(ctx, ddb.content)
+                        content_text_view.movementMethod = LinkMovementMethod.getInstance()
+                        val anim: Animation =
+                            AnimationUtils.loadAnimation(ctx, R.anim.rotate_90)
+                        tag.startAnimation(anim)
+                        val titleLayout =  view.findViewById<RelativeLayout>(R.id.title_layout)
+                        titleLayout.setBackgroundResource(R.drawable.rectange_corner_gray)
+                        anim.fillAfter = true
+                    }else
+                    {
+                        tag.tag = 0
+                        view.findViewById<LinearLayout>(R.id.content_layout).visibility=View.INVISIBLE
+                        content_text_view.text = ""
+                        content_text_view.textSize = .0F
+                        val anim: Animation =
+                            AnimationUtils.loadAnimation(ctx, R.anim.rotate_0)
+                        tag.startAnimation(anim)
+                        anim.fillAfter = true
+                        val titleLayout =  view.findViewById<RelativeLayout>(R.id.title_layout)
+                        titleLayout.setBackgroundResource(R.drawable.rectange_corner_white)
+                    }
+                }
+
+            }
+            return view
+        }
+    }
+
+
 }

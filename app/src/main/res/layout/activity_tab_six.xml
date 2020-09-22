@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<View.StickyScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -37,25 +37,30 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="35sp" />
         </RelativeLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/rectange_corner_white"
+                    android:elevation="10dp"
+                    >
+                <TextView
+                    android:id="@+id/tabsix_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/colorBlack"
+                    android:lineSpacingExtra="5dp"
+                    />
+                </RelativeLayout>
+    </ScrollView>
+   </LinearLayout>
+</LinearLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/rectange_corner_white"
-            android:elevation="10dp"
-            >
-        <TextView
-            android:id="@+id/tabsix_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:layout_margin="10dp"
-            android:textColor="@color/colorBlack"
-            />
-        </RelativeLayout>
-    </LinearLayout>
-</View.StickyScrollView>

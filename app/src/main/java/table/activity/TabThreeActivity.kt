@@ -1,12 +1,11 @@
 package table.activity
 
 import android.app.Activity
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
-import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import android.widget.ImageButton
-import android.widget.LinearLayout
 import android.widget.TextView
 import com.example.myapplication.MyApplication
 import com.example.myapplication.R
@@ -15,6 +14,10 @@ import functions.Tool
 class TabThreeActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        this.getWindow().setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN)
         // Inflate the layout for this fragment
         setContentView(R.layout.activity_tab_three)
 

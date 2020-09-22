@@ -3,10 +3,7 @@ package com.example.myapplication
 import android.app.AlertDialog
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
@@ -27,15 +24,21 @@ class MainActivity : AppCompatActivity() {
 
     var closeBut:ImageButton? = null;
     var title:TextView? = null
+    var subtitle1:TextView? = null
+    var subtitle2:TextView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
 
 
         closeBut = findViewById<ImageButton>(R.id.closeBut)
         title =  this.findViewById<TextView>(R.id.title)
-
+        subtitle1 =  this.findViewById<TextView>(R.id.subtitle1)
+        subtitle2 =  this.findViewById<TextView>(R.id.subtitle2)
 
       //  val mHomeKeyReceiver = MyReceiver()
        // val homeFilter = IntentFilter()
@@ -47,6 +50,10 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
 
         requestMainUIData()
+   //     subtitle1?.visibility = View.VISIBLE
+    //    subtitle2?.visibility = View.VISIBLE
+        subtitle1?.text = resources.getString(R.string.title1)
+        subtitle2?.text = resources.getString(R.string.title2)
 
     }
 

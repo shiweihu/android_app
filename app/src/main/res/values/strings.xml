@@ -16,6 +16,8 @@
     <string name="contact_us">Contact Us</string>
     <string name="cancelBut">NO</string>
     <string name="okBut">YES</string>
+    <string name="smt">SUBMIT</string>
+    <string name="contact_title">contact Us</string>
     <string name="urgencyText1">Are there safety concerns for you or others?</string>
     <string name="urgencyText2">Are there immediate concerns for the person in Crisis?</string>
     <string name="urgencyText3">You need to stay with your loved one and call 000 immediately and ask for an Ambulance</string>
@@ -37,9 +39,15 @@
     <string name="tab1_but2_text">Resource For Carers</string>
     <string name="download_title">full manual</string>
     <string name="progressbar_dialog_txt">connect..</string>
+    <string name="contact_description">If you would like more information on supporting someone with who is struggling with their mental health, please contact us on
+Mental Health Carers ARAFMI Illawarra
+17 Princes Highway
+Fairy Meadow NSW 2519
+${type=1|title=02 4283 3993|content=02 4283 3993|typeface=NORMAL|fontcolor=#3CB371} or ${type=1|title=02 4283 3499|content=02 4283 3993|typeface=NORMAL|fontcolor=#3CB371} or email us at
+arafmi-carers@onedoor.org.au</string>
+
     <!-- 118.178.93.45:8080 -->
     <string name="url_download_full_manual">http://118.178.93.45:8080/ARAFMIServe/downloadServlet?filename=FULL_FILE.pdf</string>
     <string name="url_submit_info">http://118.178.93.45:8080/ARAFMIServe/privateInfo?gender=%s&amp;Age=%s&amp;postcode=%s</string>
     <string name="url_menu_list">http://118.178.93.45:8080/ARAFMIServe/MenuContextServlet?versions=%s</string>
-
 </resources>

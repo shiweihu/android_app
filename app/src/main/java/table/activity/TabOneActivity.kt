@@ -6,6 +6,8 @@ import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
+import android.view.Window
+import android.view.WindowManager
 import android.widget.*
 import com.example.myapplication.MyApplication
 import com.example.myapplication.R
@@ -16,6 +18,10 @@ class TabOneActivity: Activity() {
 
      override fun onCreate(savedInstanceState: Bundle?) {
          super.onCreate(savedInstanceState)
+         this.requestWindowFeature(Window.FEATURE_NO_TITLE)
+         this.getWindow().setFlags(
+             WindowManager.LayoutParams.FLAG_FULLSCREEN,
+             WindowManager.LayoutParams.FLAG_FULLSCREEN)
          // Inflate the layout for this fragment
          setContentView(R.layout.tab_1)
 
@@ -52,7 +58,9 @@ class TabOneActivity: Activity() {
         var myApp =  this.application as MyApplication
 
         var text =  myApp.menuListL?.get(0)?.content
-        var title = myApp.menuListL?.get(0)?.title
+        var titleText = myApp.menuListL?.get(0)?.title
+        titleText = titleText?.replace("\n","")
+        var title = titleText
 
 
 

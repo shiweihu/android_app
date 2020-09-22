@@ -1,10 +1,13 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
@@ -52,10 +55,12 @@ class MenuFragment : Fragment() {
             mainactivity.closeBut?.visibility = View.INVISIBLE
         }
         mainactivity.title?.text = this.resources.getString(R.string.menu_list)
-
+        mainactivity.subtitle1?.visibility=View.INVISIBLE
+        mainactivity.subtitle2?.visibility=View.INVISIBLE
     }
     private class gridItemAdapt(val fragment:Fragment,val ctx: Context, val menuText:List<String>):BaseAdapter()
     {
+        @SuppressLint("ClickableViewAccessibility")
         @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
             var view = convertView
@@ -69,6 +74,21 @@ class MenuFragment : Fragment() {
 
                 icon_img?.setImageResource(ctx.resources.getIdentifier(grid_icon_list[position], "mipmap", ctx.packageName))
                 title_text?.text = menuText[position].replace("\n", "")
+                val backgroundLayout = view.findViewById<RelativeLayout>(R.id.grid_item)
+                backgroundLayout.setOnTouchListener { v, event ->
+                    if (event.action == MotionEvent.ACTION_DOWN) {
+                        backgroundLayout.setBackgroundResource(R.drawable.rectange_corner_gray)
+                    } else if (event.action == MotionEvent.ACTION_UP) {
+                        backgroundLayout.setBackgroundResource(R.drawable.rectange_corner_white)
+                    }else if(event.action == MotionEvent.ACTION_CANCEL)
+                    {
+                        backgroundLayout.setBackgroundResource(R.drawable.rectange_corner_white)
+                    }
+
+                    false
+                }
+
+
 
                 view.setOnClickListener{_->
                     if(position ==0)

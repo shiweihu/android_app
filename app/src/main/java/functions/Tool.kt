@@ -1,23 +1,31 @@
 package functions
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.net.Uri
-import android.os.Debug
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.TextPaint
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
-import android.text.style.UnderlineSpan
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.ImageButton
+import android.widget.TextView
 import android.widget.Toast
+import com.example.myapplication.R
 import table.activity.TabTwoActivity
 
+
+interface ToolCallBack
+{
+    fun clickListener(type:String)
+}
 
 class Tool {
 
@@ -29,7 +37,7 @@ class Tool {
         intent.data = data
         context.startActivity(intent)
     }
-    public fun functionText(context: Context, str: String):SpannableStringBuilder
+    public fun functionText(context: Context, str: String,obj:ToolCallBack? = null):SpannableStringBuilder
     {
         val style = SpannableStringBuilder()
         var index  = str.indexOf("\${")
@@ -123,6 +131,27 @@ class Tool {
                             }
                         }
                     }
+                    "200"->{
+                        clickableSpan = object : ClickableSpan() {
+                            override fun onClick(widget: View) {
+                                obj?.clickListener("200")
+                            }
+                            override fun updateDrawState(ds: TextPaint) {
+                                ds.isUnderlineText = true
+                            }
+                        }
+                    }
+                    else->
+                    {
+                        clickableSpan = object : ClickableSpan() {
+                            override fun onClick(widget: View) {
+
+                            }
+                            override fun updateDrawState(ds: TextPaint) {
+                                ds.isUnderlineText = true
+                            }
+                        }
+                    }
                 }
                 style.append(title_map[1])
                 clickableSpan?.let {  style.setSpan(
@@ -181,6 +210,20 @@ class Tool {
         val intent = Intent(context, TabTwoActivity::class.java)
         context?.startActivity(intent)
        // context?.overridePendingTransition(0,0)
+    }
+    public fun showTipByDiaglog(context: Context,text:String)
+    {
+        val dialogView: View =
+            LayoutInflater.from(context).inflate(R.layout.tips_dialog, null)
+        val dialog = AlertDialog.Builder(context).create()
+        dialog?.setCancelable(true)
+        dialog?.setView(dialogView)
+        dialog?.show()
+        val urgencyText = dialogView.findViewById<TextView>(R.id.message_text)
+        dialogView.findViewById<ImageButton>(R.id.closeBut).setOnClickListener{_->
+            dialog.dismiss()
+        }
+        urgencyText.text = text
     }
 
 

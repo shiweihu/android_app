@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<View.StickyScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:tag=""
-    >
-
-    <LinearLayout
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -28,7 +22,7 @@
 
             <TextView
                 android:id="@+id/tab_title"
-                android:layout_width="wrap_content"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
@@ -37,26 +31,24 @@
                 android:textColor="@color/colorWhite"
                 android:textSize="30sp" />
         </RelativeLayout>
-
-
-        <Spinner
-            android:id="@+id/tab_DropDownBox"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/rectange_corner_white"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        >
+        <TextView
+            android:id="@+id/content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_margin="5dp"
-
-            />
-
-        <TextView
-            android:id="@+id/DropDownBox_content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:textSize="25sp"
-            android:textColor="@color/colorBlack"
+            android:lineSpacingExtra="5dp"
             />
+    </ScrollView>
 
-    </LinearLayout>
-</View.StickyScrollView>
+</LinearLayout>
+

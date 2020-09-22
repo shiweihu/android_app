@@ -23,7 +23,7 @@
         <item >carers_crisis_plan</item>
         <item >after_crisis</item>
         <item >resources</item>
-        <item >financial_and_legal</item>
+        <item >private_health_insurance</item>
         <!-- as many more as your heart desires -->
     </string-array>
 

@@ -1,20 +1,23 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.Gravity
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.text.method.LinkMovementMethod
+import android.view.*
+import android.view.View.OnTouchListener
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import functions.Http
 import functions.Response
 import functions.Tool
+import functions.ToolCallBack
+import table.activity.ContactUs
+import table.activity.TabOneActivity
 
 
 /**
@@ -27,8 +30,8 @@ class MainUiFragment : Fragment() {
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
 
@@ -40,8 +43,11 @@ class MainUiFragment : Fragment() {
         val mainactivity =  this.activity as MainActivity
         mainactivity.closeBut?.visibility = View.INVISIBLE
         mainactivity.title?.text =  this.resources.getString(R.string.title)
+        mainactivity.subtitle1?.visibility = View.VISIBLE
+        mainactivity.subtitle2?.visibility = View.VISIBLE
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -50,14 +56,69 @@ class MainUiFragment : Fragment() {
             showDialogForSubmitInfo(view)
             //findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
-        view.findViewById<RelativeLayout>(R.id.mental_health_crisis).setOnClickListener{_ -> showErgencyDialog()
+
+        val metal_health_crisis_but = view.findViewById<RelativeLayout>(R.id.mental_health_crisis)
+
+        view.findViewById<RelativeLayout>(R.id.mental_health_crisis).setOnClickListener{ _ ->
+            showErgencyDialog()
         }
-        view.findViewById<ImageButton>(R.id.CALL).setOnClickListener{_ -> showErgencyDialog()
-        }
-        view.findViewById<RelativeLayout>(R.id.carers_resources).setOnClickListener{_->
+
+        metal_health_crisis_but.setOnTouchListener(OnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                metal_health_crisis_but.setBackgroundResource(R.drawable.rectange_corner_gray)
+            } else if (event.action == MotionEvent.ACTION_UP) {
+                metal_health_crisis_but.setBackgroundResource(R.drawable.rectange_corner_alpha)
+            }else if(event.action == MotionEvent.ACTION_CANCEL)
+            {
+                metal_health_crisis_but.setBackgroundResource(R.drawable.rectange_corner_white)
+            }
+            false
+        })
+
+        val menuBook  = view.findViewById<RelativeLayout>(R.id.carers_resources)
+        menuBook.setOnClickListener{ _->
             findNavController().navigate(R.id.action_FirstFragment_to_MenuFragment)
         }
-        view.findViewById<ImageButton>(R.id.MenuBut).setOnClickListener{_->
+        menuBook.setOnTouchListener(OnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                menuBook.setBackgroundResource(R.drawable.rectange_corner_gray)
+            } else if (event.action == MotionEvent.ACTION_UP) {
+                menuBook.setBackgroundResource(R.drawable.rectange_corner_alpha)
+            }else if(event.action == MotionEvent.ACTION_CANCEL)
+            {
+                menuBook.setBackgroundResource(R.drawable.rectange_corner_white)
+            }
+            false
+        })
+        val contactUs_layout = view.findViewById<RelativeLayout>(R.id.contact_us)
+        contactUs_layout.setOnClickListener{_->
+            val intent = Intent(activity, ContactUs::class.java)
+            this@MainUiFragment.activity?.startActivity(intent)
+            this@MainUiFragment.activity?.overridePendingTransition(0,0)
+        }
+        contactUs_layout.setOnTouchListener(OnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                contactUs_layout.setBackgroundResource(R.drawable.rectange_corner_gray)
+            } else if (event.action == MotionEvent.ACTION_UP) {
+                contactUs_layout.setBackgroundResource(R.drawable.rectange_corner_alpha)
+            }else if(event.action == MotionEvent.ACTION_CANCEL)
+            {
+                contactUs_layout.setBackgroundResource(R.drawable.rectange_corner_white)
+            }
+            false
+        })
+
+
+
+
+
+
+        view.findViewById<ImageButton>(R.id.CALL).setOnClickListener{ _ -> showErgencyDialog()
+        }
+        view.findViewById<RelativeLayout>(R.id.carers_resources).setOnClickListener{ _->
+            findNavController().navigate(R.id.action_FirstFragment_to_MenuFragment)
+        }
+        view.findViewById<ImageButton>(R.id.MenuBut).setOnClickListener{ _->
             findNavController().navigate(R.id.action_FirstFragment_to_MenuFragment)
         }
         //view.findViewById<ScrollView>(R.id.scrollview).background.alpha = 200
@@ -80,29 +141,56 @@ class MainUiFragment : Fragment() {
         urgencyText.text=this.getString(R.string.urgencyText1)
 
         val cancelBut = dialogView.findViewById<TextView>(R.id.cancel)
-        cancelBut.setOnClickListener{_->
-            dialog?.dismiss()
+        cancelBut.setOnClickListener{ _->
+            var tag =  dialogView.getTag()
+            if (tag != 3){
+                dialogView.setTag(3)
+                urgencyText.text = this.context?.let { Tool.get().functionText(this.context!!,
+                    this.getString(
+                        R.string.urgencyText4
+                    ),
+                    object :
+                        ToolCallBack {
+                        override fun clickListener(type: String) {
+                        }
+
+                    })}
+                urgencyText.movementMethod = LinkMovementMethod.getInstance()
+            }else
+            {
+                dialog.dismiss()
+            }
         }
         val okBut = dialogView.findViewById<TextView>(R.id.ok)
-        okBut.setOnClickListener{_->
+        okBut.setOnClickListener{ _->
             var tag =  dialogView.getTag()
             when(tag)
             {
-                0 ->{
+                0 -> {
                     urgencyText.text = this.getString(R.string.urgencyText2)
                     dialogView.setTag(1)
                 }
-                1->{
+                1 -> {
                     urgencyText.text = this.getString(R.string.urgencyText3)
+
                     dialogView.setTag(2)
                 }
-                2->{
+                2 -> {
                     //  if(checkReadPermission(Manifest.permission.CALL_PHONE,10111))
                     //  {
                     //     call(this.getString(R.string.emergencyCall))
                     // }
-                    this@MainUiFragment.context?.let { Tool.get().call(it,this.getString(R.string.emergencyCall)) }
+                    this@MainUiFragment.context?.let {
+                        Tool.get().call(
+                            it,
+                            this.getString(R.string.emergencyCall)
+                        )
+                    }
                     dialog?.dismiss()
+                }
+                3 -> {
+                    dialog.dismiss()
+                    this.context?.let { Tool.get().gotoTheNextStep(it) }
                 }
             }
         }
@@ -114,7 +202,7 @@ class MainUiFragment : Fragment() {
 //
 //
           var url = this.getString(R.string.url_download_full_manual)
-          Tool.get().accessWeb(this.context!!,url)
+          Tool.get().accessWeb(this.context!!, url)
 //        //创建下载任务,downloadUrl就是下载链接
 //        val request = DownloadManager.Request(Uri.parse(url))
 //        //指定下载路径和下载文件名
@@ -147,7 +235,7 @@ class MainUiFragment : Fragment() {
         }
     }
 
-    private fun showDialogForSubmitInfo(view:View)
+    private fun showDialogForSubmitInfo(view: View)
     {
         val dialogView: View =
             LayoutInflater.from(view.context).inflate(R.layout.user_info_dialog, null)
@@ -158,7 +246,11 @@ class MainUiFragment : Fragment() {
         dialog.setView(dialogView)
         dialog.show()
         val gspinner = dialogView.findViewById<Spinner>(R.id.GenderSpinner)
-        var adapter = ArrayAdapter.createFromResource(dialogView.context, R.array.gender,android.R.layout.simple_spinner_item);
+        var adapter = ArrayAdapter.createFromResource(
+            dialogView.context,
+            R.array.gender,
+            android.R.layout.simple_spinner_item
+        );
         //第三步：设置下拉列表下拉时的菜单样式
         //第三步：设置下拉列表下拉时的菜单样式
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -185,7 +277,11 @@ class MainUiFragment : Fragment() {
 //        })
 
         val ageSpinner = dialogView.findViewById<Spinner>(R.id.AgeSpinner)
-        adapter = ArrayAdapter.createFromResource(dialogView.context, R.array.ageGroup,android.R.layout.simple_spinner_item);
+        adapter = ArrayAdapter.createFromResource(
+            dialogView.context,
+            R.array.ageGroup,
+            android.R.layout.simple_spinner_item
+        );
         //第三步：设置下拉列表下拉时的菜单样式
         //第三步：设置下拉列表下拉时的菜单样式
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -200,32 +296,35 @@ class MainUiFragment : Fragment() {
 
             when(gender)
             {
-                "male" -> gender= "1"
+                "male" -> gender = "1"
                 "female" -> gender = "0"
+                "others" -> gender = "2"
             }
 
             when(age)
             {
-                "under 30" -> age= "1"
+                "under 30" -> age = "1"
                 "30 - 45" -> age = "2"
                 "46 - 60" -> age = "3"
                 "Over 60" -> age = "4"
             }
 
             //Snackbar.make(view, name+" "+gender+" "+age, Snackbar.LENGTH_LONG).setAction("Action", null).show()
-            var url  = this.getString(R.string.url_submit_info).format(gender,age,postcode)
+            var url  = this.getString(R.string.url_submit_info).format(gender, age, postcode)
             Http.get().doGet(url, object : Response {
                 override fun notification(s: String?) {
-                      if(s.equals("1"))
-                      {
-                          preferences.Firstflag=true
-                          dialog.dismiss()
-                      }else
-                      {
-                          var toast=Toast.makeText(view.context,"please,input information",Toast.LENGTH_SHORT    )
-                          toast.setGravity(Gravity.CENTER, 0, 0)
-                          toast.show()
-                      }
+                    if (s.equals("1")) {
+                        preferences.Firstflag = true
+                        dialog.dismiss()
+                    } else {
+                        var toast = Toast.makeText(
+                            view.context,
+                            "please,input information",
+                            Toast.LENGTH_SHORT
+                        )
+                        toast.setGravity(Gravity.CENTER, 0, 0)
+                        toast.show()
+                    }
                 }
             })
 

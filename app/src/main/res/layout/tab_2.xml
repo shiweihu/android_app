@@ -19,8 +19,8 @@
 
             <ImageButton
                 android:id="@+id/act_close"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="25dp"
                 android:background="@mipmap/close" />
@@ -35,10 +35,15 @@
                 android:text="title"
                 android:textColor="@color/colorWhite"
                 android:textSize="30sp"
-                android:textStyle="bold"
                 />
         </RelativeLayout>
-
+     <TextView
+         android:id="@+id/context"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginLeft="15dp"
+         android:layout_marginTop="5dp"
+         />
 
 
         <ListView
@@ -52,7 +57,7 @@
         android:dividerHeight="5dp"
         android:divider="@null"
         >
-    </ListView>
+        </ListView>
 
 <!--
         <Spinner

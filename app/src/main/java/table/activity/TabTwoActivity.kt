@@ -1,23 +1,21 @@
 package table.activity
 
-import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.widget.*
 import androidx.annotation.RequiresApi
-import androidx.fragment.app.Fragment
 import com.example.myapplication.MyApplication
 import com.example.myapplication.R
 import functions.Tool
-import mode.DropDownBox
+import functions.ToolCallBack
+
+
 import mode.menuItem
 
 
@@ -26,6 +24,10 @@ class TabTwoActivity: Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         // Inflate the layout for this fragment
        super.onCreate(savedInstanceState)
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        this.getWindow().setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN)
        setContentView(R.layout.tab_2)
 
         findViewById<ImageButton>(R.id.act_close).setOnClickListener { _->
@@ -45,9 +47,15 @@ class TabTwoActivity: Activity() {
         title = title?.replace("\n", "")
 
         findViewById<TextView>(R.id.tab_title).text = title
-
+        findViewById<TextView>(R.id.context).text =  Tool.get().functionText(this,content , object:
+            ToolCallBack
+        {
+            override fun clickListener(type: String) {
+                Tool.get().showTipByDiaglog(this@TabTwoActivity,tip)
+            }
+        })
+        findViewById<TextView>(R.id.context).movementMethod  = LinkMovementMethod.getInstance()
         val listView = findViewById<ListView>(R.id.list_view)
-
         listView.adapter =ListItemAdapt(this,TabTwo)
 
     }
@@ -84,7 +92,12 @@ class TabTwoActivity: Activity() {
                         tag.tag = 1
                         view.findViewById<LinearLayout>(R.id.content_layout).visibility =View.VISIBLE
                         content_text_view.textSize = 20.0F
-                        content_text_view.text =  Tool.get().functionText(ctx, ddb.content)
+                        content_text_view.text =  Tool.get().functionText(ctx, ddb.content,object:ToolCallBack
+                        {
+                             override fun clickListener(type: String) {
+                                Tool.get().showTipByDiaglog(ctx,ddb.tips)
+                            }
+                        })
                         content_text_view.movementMethod = LinkMovementMethod.getInstance()
                         val anim: Animation =
                             AnimationUtils.loadAnimation(ctx, R.anim.rotate_90)

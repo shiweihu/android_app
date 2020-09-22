@@ -24,8 +24,8 @@
                 >
                 <ImageButton
                     android:id="@+id/closeBut"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:background="@mipmap/close"
                     android:layout_centerVertical="true"
                     android:visibility="invisible"
@@ -37,10 +37,36 @@
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
                     android:gravity="center_horizontal"
-                    android:text="asasdasdasdasdasdasdasd\n\nasd"
+                    android:text="asasdasdasdasd"
                     android:textColor="@color/colorWhite"
                     android:textSize="25sp"
+
                     />
+                <TextView
+                    android:id="@+id/subtitle1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_above="@+id/title"
+                    android:text="asasdasdasdasda"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="20sp"
+                    android:visibility="invisible"
+                    />
+                <TextView
+                    android:id="@+id/subtitle2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/title"
+                    android:text="asasdasdasdasda"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="15sp"
+                    android:visibility="invisible"
+                    />
+
 
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
