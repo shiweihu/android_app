@@ -12,6 +12,7 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import com.example.myapplication.MyApplication
 import com.example.myapplication.R
+import functions.Http
 import functions.Tool
 import functions.ToolCallBack
 
@@ -34,7 +35,10 @@ class TabTwoActivity: Activity() {
             super.finish()
             overridePendingTransition(0, 0);
         }
-
+        var myApp =  this.application as MyApplication
+        var titleText = myApp.menuListL?.get(1)?.title
+        val url = this.getString(R.string.usage_table_request).format(titleText)
+        Http.get().doGet(url,null)
         //findViewById<LinearLayout>(R.id.background_layout).background.alpha = 200
     }
     override fun onStart() {

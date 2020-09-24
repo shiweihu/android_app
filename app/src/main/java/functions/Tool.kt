@@ -36,6 +36,8 @@ class Tool {
         val data = Uri.parse("tel:$num")
         intent.data = data
         context.startActivity(intent)
+        val url = context.getString(R.string.usage_number_record_request).format(num)
+        Http.get().doGet(url,null)
     }
     public fun functionText(context: Context, str: String,obj:ToolCallBack? = null):SpannableStringBuilder
     {

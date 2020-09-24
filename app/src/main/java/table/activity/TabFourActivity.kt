@@ -12,6 +12,7 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import com.example.myapplication.MyApplication
 import com.example.myapplication.R
+import functions.Http
 import functions.Tool
 import mode.menuItem
 
@@ -24,6 +25,19 @@ class TabFourActivity : Activity() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_tab_four)
+
+
+        val close_but = findViewById<ImageButton>(R.id.act_close)
+        close_but.setOnClickListener{ _->
+            super.finish()
+            overridePendingTransition(0, 0);
+        }
+
+        var myApp =  this.application as MyApplication
+        var titleText = myApp.menuListL?.get(3)?.title
+        val url = this.getString(R.string.usage_table_request).format(titleText)
+        Http.get().doGet(url,null)
+
     }
 
     override fun onStart() {
@@ -37,11 +51,7 @@ class TabFourActivity : Activity() {
        // val subtitle = findViewById<TextView>(R.id.tab_subhead)
         //subtitle.text = tabfour.getDropDownBoxByIndex(0).title
 
-        val close_but = findViewById<ImageButton>(R.id.act_close)
-        close_but.setOnClickListener{ _->
-            super.finish()
-            overridePendingTransition(0, 0);
-        }
+
 
         val listView = findViewById<ListView>(R.id.list_view)
 

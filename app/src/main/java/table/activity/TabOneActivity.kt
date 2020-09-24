@@ -11,6 +11,7 @@ import android.view.WindowManager
 import android.widget.*
 import com.example.myapplication.MyApplication
 import com.example.myapplication.R
+import functions.Http
 import functions.Tool
 
 
@@ -29,7 +30,10 @@ class TabOneActivity: Activity() {
              super.finish()
              overridePendingTransition(0, 0);
          }
-
+         var myApp =  this.application as MyApplication
+         var titleText = myApp.menuListL?.get(0)?.title
+         val url = this.getString(R.string.usage_table_request).format(titleText)
+         Http.get().doGet(url,null)
 
 
 
@@ -61,9 +65,6 @@ class TabOneActivity: Activity() {
         var titleText = myApp.menuListL?.get(0)?.title
         titleText = titleText?.replace("\n","")
         var title = titleText
-
-
-
 
         findViewById<TextView>(R.id.tab_title).text = title
         findViewById<TextView>(R.id.tab1_content).text= Tool.get().functionText(this,text!!)

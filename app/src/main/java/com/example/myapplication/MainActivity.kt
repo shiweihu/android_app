@@ -40,6 +40,8 @@ class MainActivity : AppCompatActivity() {
         subtitle1 =  this.findViewById<TextView>(R.id.subtitle1)
         subtitle2 =  this.findViewById<TextView>(R.id.subtitle2)
 
+        requestMainUIData()
+
       //  val mHomeKeyReceiver = MyReceiver()
        // val homeFilter = IntentFilter()
        // homeFilter.addAction(Intent.ACTION_CLOSE_SYSTEM_DIALOGS)
@@ -49,7 +51,7 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
 
-        requestMainUIData()
+
    //     subtitle1?.visibility = View.VISIBLE
     //    subtitle2?.visibility = View.VISIBLE
         subtitle1?.text = resources.getString(R.string.title1)

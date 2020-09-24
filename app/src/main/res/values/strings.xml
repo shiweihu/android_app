@@ -47,7 +47,18 @@ ${type=1|title=02 4283 3993|content=02 4283 3993|typeface=NORMAL|fontcolor=#3CB3
 arafmi-carers@onedoor.org.au</string>
 
     <!-- 118.178.93.45:8080 -->
+
     <string name="url_download_full_manual">http://118.178.93.45:8080/ARAFMIServe/downloadServlet?filename=FULL_FILE.pdf</string>
     <string name="url_submit_info">http://118.178.93.45:8080/ARAFMIServe/privateInfo?gender=%s&amp;Age=%s&amp;postcode=%s</string>
     <string name="url_menu_list">http://118.178.93.45:8080/ARAFMIServe/MenuContextServlet?versions=%s</string>
-</resources>
+    <string name="usage_table_request">http://118.178.93.45:8080/ARAFMIServe/UsageTabRecord?tablename=%s</string>
+    <string name="usage_number_record_request">http://118.178.93.45:8080/ARAFMIServe/UsagePhoneCallsServlet?number=%s</string>
+
+    <!--
+        <string name="url_download_full_manual">http://10.0.2.2:8080/ARAFMIServe/downloadServlet?filename=FULL_FILE.pdf</string>
+        <string name="url_submit_info">http://10.0.2.2:8080/ARAFMIServe/privateInfo?gender=%s&amp;Age=%s&amp;postcode=%s</string>
+        <string name="url_menu_list">http://10.0.2.2:8080/ARAFMIServe/MenuContextServlet?versions=%s</string>
+        <string name="usage_table_request">http://10.0.2.2:8080/ARAFMIServe/UsageTabRecord?tablename=%s</string>
+        <string name="usage_number_record_request">http://10.0.2.2:8080/ARAFMIServe/UsagePhoneCallsServlet?number=%s</string>
+          -->
+    </resources>
