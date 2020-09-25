@@ -24,7 +24,7 @@ import table.activity.TabTwoActivity
 
 interface ToolCallBack
 {
-    fun clickListener(type:String)
+    fun clickListener(type: String)
 }
 
 class Tool {
@@ -37,9 +37,9 @@ class Tool {
         intent.data = data
         context.startActivity(intent)
         val url = context.getString(R.string.usage_number_record_request).format(num)
-        Http.get().doGet(url,null)
+        Http.get().doGet(url, null)
     }
-    public fun functionText(context: Context, str: String,obj:ToolCallBack? = null):SpannableStringBuilder
+    public fun functionText(context: Context, str: String, obj: ToolCallBack? = null):SpannableStringBuilder
     {
         val style = SpannableStringBuilder()
         var index  = str.indexOf("\${")
@@ -60,7 +60,7 @@ class Tool {
                 if(attribute.size != 5)
                 {
                     //Log(Log.DEBUG,funtion)
-                    Log.e(Log.DEBUG.toString(),funtion)
+                    Log.e(Log.DEBUG.toString(), funtion)
                     //it attribute is not equals to 5,it means this text with error,directly show this text.
                     style.clear()
                     style.append(str)
@@ -106,6 +106,7 @@ class Tool {
                                 this@Tool.call(context, content_map[1])
 
                             }
+
                             override fun updateDrawState(ds: TextPaint) {
                                 ds.isUnderlineText = true
                             }
@@ -117,27 +118,29 @@ class Tool {
                             override fun onClick(widget: View) {
                                 this@Tool.accessWeb(context, content_map[1])
                             }
+
                             override fun updateDrawState(ds: TextPaint) {
                                 ds.isUnderlineText = true
                             }
                         }
                     }
-                    "100"->
-                    {
+                    "100" -> {
                         clickableSpan = object : ClickableSpan() {
                             override fun onClick(widget: View) {
                                 this@Tool.gotoTheNextStep(context)
                             }
+
                             override fun updateDrawState(ds: TextPaint) {
                                 ds.isUnderlineText = true
                             }
                         }
                     }
-                    "200"->{
+                    "200" -> {
                         clickableSpan = object : ClickableSpan() {
                             override fun onClick(widget: View) {
                                 obj?.clickListener("200")
                             }
+
                             override fun updateDrawState(ds: TextPaint) {
                                 ds.isUnderlineText = true
                             }
@@ -213,7 +216,7 @@ class Tool {
         context?.startActivity(intent)
        // context?.overridePendingTransition(0,0)
     }
-    public fun showTipByDiaglog(context: Context,text:String)
+    public fun showTipByDiaglog(context: Context, text: String)
     {
         val dialogView: View =
             LayoutInflater.from(context).inflate(R.layout.tips_dialog, null)
@@ -222,10 +225,25 @@ class Tool {
         dialog?.setView(dialogView)
         dialog?.show()
         val urgencyText = dialogView.findViewById<TextView>(R.id.message_text)
-        dialogView.findViewById<ImageButton>(R.id.closeBut).setOnClickListener{_->
+        dialogView.findViewById<ImageButton>(R.id.closeBut).setOnClickListener{ _->
             dialog.dismiss()
         }
         urgencyText.text = text
+    }
+    public fun sendEmail(context: Context,text: String, name: String)
+    {
+        //val uri = Uri.parse("mailto:$email_add")
+        val intent = Intent(Intent.ACTION_SEND)
+        val email = arrayOf(context.getString(R.string.contact_us_email))
+        intent.putExtra(Intent.EXTRA_EMAIL, email);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "email come from " + name);
+        intent.putExtra(Intent.EXTRA_TEXT, text)
+        intent.type = "text/email"
+        //intent.type = "message/rfc882"
+        context.startActivity(
+            Intent.createChooser(intent, "Choose Email Client")
+        )
+
     }
 
 

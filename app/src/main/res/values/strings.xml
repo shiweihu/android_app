@@ -16,7 +16,9 @@
     <string name="contact_us">Contact Us</string>
     <string name="cancelBut">NO</string>
     <string name="okBut">YES</string>
-    <string name="smt">SUBMIT</string>
+    <string name="smt">send email</string>
+    <string name="contact_us_hint">please,input what you want to tell to us</string>
+    <string name="contact_us_email">sh087@uowmail.edu.au</string>
     <string name="contact_title">contact Us</string>
     <string name="urgencyText1">Are there safety concerns for you or others?</string>
     <string name="urgencyText2">Are there immediate concerns for the person in Crisis?</string>
@@ -38,6 +40,8 @@
     <string name="tab1_but1_text">Assess The Sltuation</string>
     <string name="tab1_but2_text">Resource For Carers</string>
     <string name="download_title">full manual</string>
+    <string name="toast_input_name">please,input your name</string>
+    <string name="toast_input_message">please,input the message</string>
     <string name="progressbar_dialog_txt">connect..</string>
     <string name="contact_description">If you would like more information on supporting someone with who is struggling with their mental health, please contact us on
 Mental Health Carers ARAFMI Illawarra
