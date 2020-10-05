@@ -12,12 +12,16 @@ import android.view.View.OnTouchListener
 import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import functions.Http
 import functions.Response
 import functions.Tool
 import functions.ToolCallBack
+import mode.Event
 import table.activity.ContactUs
-import table.activity.TabOneActivity
+import table.activity.EventActivity
+import table.activity.TabSevenActivity
 
 
 /**
@@ -42,9 +46,9 @@ class MainUiFragment : Fragment() {
         super.onStart()
         val mainactivity =  this.activity as MainActivity
         mainactivity.closeBut?.visibility = View.INVISIBLE
-        mainactivity.title?.text =  this.resources.getString(R.string.title)
-        mainactivity.subtitle1?.visibility = View.VISIBLE
-        mainactivity.subtitle2?.visibility = View.VISIBLE
+        mainactivity.title?.visibility = View.INVISIBLE
+        mainactivity.title_img?.visibility = View.VISIBLE
+
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -59,8 +63,8 @@ class MainUiFragment : Fragment() {
 
         val metal_health_crisis_but = view.findViewById<RelativeLayout>(R.id.mental_health_crisis)
 
-        view.findViewById<RelativeLayout>(R.id.mental_health_crisis).setOnClickListener{ _ ->
-            showErgencyDialog()
+        metal_health_crisis_but.setOnClickListener{ _ ->
+            Tool.get().showErgencyDialog(this@MainUiFragment.context)
         }
 
         metal_health_crisis_but.setOnTouchListener(OnTouchListener { v, event ->
@@ -68,9 +72,8 @@ class MainUiFragment : Fragment() {
                 metal_health_crisis_but.setBackgroundResource(R.drawable.rectange_corner_gray)
             } else if (event.action == MotionEvent.ACTION_UP) {
                 metal_health_crisis_but.setBackgroundResource(R.drawable.rectange_corner_alpha)
-            }else if(event.action == MotionEvent.ACTION_CANCEL)
-            {
-                metal_health_crisis_but.setBackgroundResource(R.drawable.rectange_corner_white)
+            } else if (event.action == MotionEvent.ACTION_CANCEL) {
+                metal_health_crisis_but.setBackgroundResource(R.drawable.rectange_corner_alpha)
             }
             false
         })
@@ -84,26 +87,39 @@ class MainUiFragment : Fragment() {
                 menuBook.setBackgroundResource(R.drawable.rectange_corner_gray)
             } else if (event.action == MotionEvent.ACTION_UP) {
                 menuBook.setBackgroundResource(R.drawable.rectange_corner_alpha)
-            }else if(event.action == MotionEvent.ACTION_CANCEL)
-            {
-                menuBook.setBackgroundResource(R.drawable.rectange_corner_white)
+            } else if (event.action == MotionEvent.ACTION_CANCEL) {
+                menuBook.setBackgroundResource(R.drawable.rectange_corner_alpha)
             }
             false
         })
         val contactUs_layout = view.findViewById<RelativeLayout>(R.id.contact_us)
-        contactUs_layout.setOnClickListener{_->
+        contactUs_layout.setOnClickListener{ _->
             val intent = Intent(activity, ContactUs::class.java)
             this@MainUiFragment.activity?.startActivity(intent)
-            this@MainUiFragment.activity?.overridePendingTransition(0,0)
+            this@MainUiFragment.activity?.overridePendingTransition(0, 0)
         }
         contactUs_layout.setOnTouchListener(OnTouchListener { v, event ->
             if (event.action == MotionEvent.ACTION_DOWN) {
                 contactUs_layout.setBackgroundResource(R.drawable.rectange_corner_gray)
             } else if (event.action == MotionEvent.ACTION_UP) {
                 contactUs_layout.setBackgroundResource(R.drawable.rectange_corner_alpha)
-            }else if(event.action == MotionEvent.ACTION_CANCEL)
-            {
-                contactUs_layout.setBackgroundResource(R.drawable.rectange_corner_white)
+            } else if (event.action == MotionEvent.ACTION_CANCEL) {
+                contactUs_layout.setBackgroundResource(R.drawable.rectange_corner_alpha)
+            }
+            false
+        })
+
+        val tips_layout = view.findViewById<RelativeLayout>(R.id.carers_tips)
+        tips_layout.setOnClickListener{ _->
+            findNavController().navigate(R.id.action_FirstFragment_to_tipsFragment)
+        }
+        tips_layout.setOnTouchListener(OnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                tips_layout.setBackgroundResource(R.drawable.rectange_corner_gray)
+            } else if (event.action == MotionEvent.ACTION_UP) {
+                tips_layout.setBackgroundResource(R.drawable.rectange_corner_alpha)
+            } else if (event.action == MotionEvent.ACTION_CANCEL) {
+                tips_layout.setBackgroundResource(R.drawable.rectange_corner_alpha)
             }
             false
         })
@@ -111,16 +127,58 @@ class MainUiFragment : Fragment() {
 
 
 
-
-
-        view.findViewById<ImageButton>(R.id.CALL).setOnClickListener{ _ -> showErgencyDialog()
+        val come_up_layout = view.findViewById<RelativeLayout>(R.id.come_up)
+        come_up_layout.setOnClickListener{ _->
+            var url = this.getString(R.string.select_events)
+            url=url.format(preferences.UUID)
+            Http.get().doGetWithDialog(
+                this.context!!,
+                url,
+                object : Response {
+                    override fun notification(s: String?) {
+                        val gson = Gson()
+                        val event_list =  gson.fromJson<MutableList<Event>>(s!!, object : TypeToken<MutableList<Event>>() {}.type)
+                        val myapp = this@MainUiFragment?.activity?.application as MyApplication
+                        myapp.eventList = event_list
+                        val intent = Intent(activity, EventActivity::class.java)
+                        this@MainUiFragment.activity?.startActivity(intent)
+                        this@MainUiFragment.activity?.overridePendingTransition(0, 0)
+                    }
+                })
         }
+        come_up_layout.setOnTouchListener(OnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                come_up_layout.setBackgroundResource(R.drawable.rectange_corner_gray)
+            } else if (event.action == MotionEvent.ACTION_UP) {
+                come_up_layout.setBackgroundResource(R.drawable.rectange_corner_alpha)
+            } else if (event.action == MotionEvent.ACTION_CANCEL) {
+                come_up_layout.setBackgroundResource(R.drawable.rectange_corner_alpha)
+            }
+            false
+        })
+        val resis_layout = view.findViewById<RelativeLayout>(R.id.cresis_plan)
+        resis_layout.setOnClickListener{ _->
+            val intent = Intent(activity, TabSevenActivity::class.java)
+            this@MainUiFragment.activity?.startActivity(intent)
+            this@MainUiFragment.activity?.overridePendingTransition(0, 0)
+        }
+        resis_layout.setOnTouchListener(OnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) {
+                resis_layout.setBackgroundResource(R.drawable.rectange_corner_gray)
+            } else if (event.action == MotionEvent.ACTION_UP) {
+                resis_layout.setBackgroundResource(R.drawable.rectange_corner_alpha)
+            } else if (event.action == MotionEvent.ACTION_CANCEL) {
+                resis_layout.setBackgroundResource(R.drawable.rectange_corner_alpha)
+            }
+            false
+        })
+
+
+
         view.findViewById<RelativeLayout>(R.id.carers_resources).setOnClickListener{ _->
             findNavController().navigate(R.id.action_FirstFragment_to_MenuFragment)
         }
-        view.findViewById<ImageButton>(R.id.MenuBut).setOnClickListener{ _->
-            findNavController().navigate(R.id.action_FirstFragment_to_MenuFragment)
-        }
+
         //view.findViewById<ScrollView>(R.id.scrollview).background.alpha = 200
 
        // view.findViewById<ImageButton>(R.id.DownLoadBut).setOnClickListener { _->
@@ -128,73 +186,7 @@ class MainUiFragment : Fragment() {
       //  }
 
     }
-    private fun showErgencyDialog()
-    {
-        val dialogView: View =
-            LayoutInflater.from(this.context).inflate(R.layout.urgency_layout, null)
-        val dialog = AlertDialog.Builder(this.context).create()
-        dialog?.setCancelable(false)
-        dialog?.setView(dialogView)
-        dialog?.show()
-        dialogView.setTag(0)
-        val urgencyText = dialogView.findViewById<TextView>(R.id.urgency_text)
-        urgencyText.text=this.getString(R.string.urgencyText1)
 
-        val cancelBut = dialogView.findViewById<TextView>(R.id.cancel)
-        cancelBut.setOnClickListener{ _->
-            var tag =  dialogView.getTag()
-            if (tag != 3){
-                dialogView.setTag(3)
-                urgencyText.text = this.context?.let { Tool.get().functionText(this.context!!,
-                    this.getString(
-                        R.string.urgencyText4
-                    ),
-                    object :
-                        ToolCallBack {
-                        override fun clickListener(type: String) {
-                        }
-
-                    })}
-                urgencyText.movementMethod = LinkMovementMethod.getInstance()
-            }else
-            {
-                dialog.dismiss()
-            }
-        }
-        val okBut = dialogView.findViewById<TextView>(R.id.ok)
-        okBut.setOnClickListener{ _->
-            var tag =  dialogView.getTag()
-            when(tag)
-            {
-                0 -> {
-                    urgencyText.text = this.getString(R.string.urgencyText2)
-                    dialogView.setTag(1)
-                }
-                1 -> {
-                    urgencyText.text = this.getString(R.string.urgencyText3)
-
-                    dialogView.setTag(2)
-                }
-                2 -> {
-                    //  if(checkReadPermission(Manifest.permission.CALL_PHONE,10111))
-                    //  {
-                    //     call(this.getString(R.string.emergencyCall))
-                    // }
-                    this@MainUiFragment.context?.let {
-                        Tool.get().call(
-                            it,
-                            this.getString(R.string.emergencyCall)
-                        )
-                    }
-                    dialog?.dismiss()
-                }
-                3 -> {
-                    dialog.dismiss()
-                    this.context?.let { Tool.get().gotoTheNextStep(it) }
-                }
-            }
-        }
-    }
 
     private fun DownloadFullManual()
     {
@@ -251,44 +243,20 @@ class MainUiFragment : Fragment() {
             R.array.gender,
             android.R.layout.simple_spinner_item
         );
-        //第三步：设置下拉列表下拉时的菜单样式
-        //第三步：设置下拉列表下拉时的菜单样式
+
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        //第四步：将适配器添加到下拉列表上
-        //第四步：将适配器添加到下拉列表上
         gspinner.adapter = adapter
 
 
-
-//        gspinner.setOnItemSelectedListener(object: AdapterView.OnItemSelectedListener
-//        {
-//            override fun onNothingSelected(parent: AdapterView<*>?) {
-//                TODO("Not yet implemented")
-//            }
-//
-//            override fun onItemSelected(
-//                parent: AdapterView<*>?,
-//                view: View?,
-//                position: Int,
-//                id: Long
-//            ) {
-//
-//            }
-//        })
 
         val ageSpinner = dialogView.findViewById<Spinner>(R.id.AgeSpinner)
         adapter = ArrayAdapter.createFromResource(
             dialogView.context,
             R.array.ageGroup,
             android.R.layout.simple_spinner_item
-        );
-        //第三步：设置下拉列表下拉时的菜单样式
-        //第三步：设置下拉列表下拉时的菜单样式
+        )
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        //第四步：将适配器添加到下拉列表上
-        //第四步：将适配器添加到下拉列表上
         ageSpinner.adapter = adapter
-
         dialogView.findViewById<Button>(R.id.submitBut).setOnClickListener{ _ ->
             var postcode:String = dialogView.findViewById<EditText>(R.id.recordpostcode).text.toString()
             var gender:String = gspinner.selectedItem as String
@@ -298,23 +266,25 @@ class MainUiFragment : Fragment() {
             {
                 "male" -> gender = "1"
                 "female" -> gender = "0"
-                "others" -> gender = "2"
+                "Non-binary" -> gender = "2"
+                "Rather Not Say" -> gender = "3"
             }
 
             when(age)
             {
-                "under 30" -> age = "1"
-                "30 - 45" -> age = "2"
-                "46 - 60" -> age = "3"
-                "Over 60" -> age = "4"
+                "18-35" -> age = "1"
+                "30 - 50" -> age = "2"
+                "51 - 65" -> age = "3"
+                "66 or above" -> age = "4"
             }
 
             //Snackbar.make(view, name+" "+gender+" "+age, Snackbar.LENGTH_LONG).setAction("Action", null).show()
             var url  = this.getString(R.string.url_submit_info).format(gender, age, postcode)
             Http.get().doGet(url, object : Response {
                 override fun notification(s: String?) {
-                    if (s.equals("1")) {
+                    if (!s.equals("0")) {
                         preferences.Firstflag = true
+                        preferences.UUID = s!!
                         dialog.dismiss()
                     } else {
                         var toast = Toast.makeText(

@@ -6,9 +6,11 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import android.net.Uri
+import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.TextPaint
+import android.text.method.LinkMovementMethod
 import android.text.style.ClickableSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.StyleSpan
@@ -19,7 +21,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import com.example.myapplication.R
-import table.activity.TabTwoActivity
+import table.activity.ResourceActivity
 
 
 interface ToolCallBack
@@ -104,7 +106,7 @@ class Tool {
                         clickableSpan = object : ClickableSpan() {
                             override fun onClick(widget: View) {
                                 this@Tool.call(context, content_map[1])
-
+                                obj?.clickListener(content_map[1])
                             }
 
                             override fun updateDrawState(ds: TextPaint) {
@@ -127,7 +129,9 @@ class Tool {
                     "100" -> {
                         clickableSpan = object : ClickableSpan() {
                             override fun onClick(widget: View) {
-                                this@Tool.gotoTheNextStep(context)
+                                    this@Tool.gotoTheNextStep(context)
+                                    obj?.let{it.clickListener(content_map[1])}
+
                             }
 
                             override fun updateDrawState(ds: TextPaint) {
@@ -150,7 +154,7 @@ class Tool {
                     {
                         clickableSpan = object : ClickableSpan() {
                             override fun onClick(widget: View) {
-
+                                accessFunction(type_map[1],context)
                             }
                             override fun updateDrawState(ds: TextPaint) {
                                 ds.isUnderlineText = true
@@ -212,7 +216,7 @@ class Tool {
    }
     public fun gotoTheNextStep(context: Context)
     {
-        val intent = Intent(context, TabTwoActivity::class.java)
+        val intent = Intent(context, ResourceActivity::class.java)
         context?.startActivity(intent)
        // context?.overridePendingTransition(0,0)
     }
@@ -245,6 +249,99 @@ class Tool {
         )
 
     }
+    private fun accessFunction(index:String,context:Context)
+    {
+        when(index)
+        {
+            "4"->{
+                showErgencyDialog(context)
+            }
+            "5"->{
+                val intent = Intent(context, ResourceActivity::class.java)
+                val b: Bundle = Bundle()
+                b.putInt("index",5)
+                intent.putExtras(b)
+                context.startActivity(intent)
+                //context.overridePendingTransition(0,0)
+            }
+        }
+    }
+
+    public fun showErgencyDialog(context:Context?)
+    {
+        val dialogView: View =
+            LayoutInflater.from(context).inflate(R.layout.urgency_layout, null)
+        val dialog = AlertDialog.Builder(context).create()
+        dialog?.setCancelable(false)
+        dialog?.setView(dialogView)
+        dialog?.show()
+        dialogView.setTag(0)
+        val urgencyText = dialogView.findViewById<TextView>(R.id.urgency_text)
+        val close_but = dialogView.findViewById<ImageButton>(R.id.close_but)
+        close_but.setOnClickListener{
+            dialog.dismiss()
+        }
+        urgencyText.text=context?.getString(R.string.urgencyText1)
+        val okBut = dialogView.findViewById<TextView>(R.id.ok)
+        val cancelBut = dialogView.findViewById<TextView>(R.id.cancel)
+        cancelBut.setOnClickListener{ _->
+            var tag =  dialogView.getTag()
+            when(tag)
+            {
+                1-> {
+                    urgencyText.text = context?.getString(R.string.urgencyText5)
+                    dialogView.setTag(2)
+                }
+                else->{
+                    urgencyText.text = context?.let { Tool.get().functionText(context!!,context?.getString(R.string.urgencyText6),object:ToolCallBack
+                    {
+                        override fun clickListener(type: String) {
+                            dialog.dismiss()
+                        }
+                    })}
+                    urgencyText.movementMethod = LinkMovementMethod.getInstance()
+                    okBut.visibility = View.INVISIBLE
+                    cancelBut.visibility = View.INVISIBLE
+                }
+            }
+        }
+        okBut.setOnClickListener{ _->
+            var tag =  dialogView.getTag()
+            when(tag)
+            {
+                0 -> {
+                    urgencyText.text = context?.getString(R.string.urgencyText2)
+                    dialogView.setTag(1)
+                }
+                1 -> {
+                    urgencyText.text = context?.getString(R.string.urgencyText3)
+                    dialogView.setTag(2)
+                }
+                2 -> {
+                    urgencyText.text = context?.let { Tool.get().functionText(context!!,context?.getString(R.string.urgencyText4),object:ToolCallBack
+                    {
+                        override fun clickListener(type: String) {
+                            dialog.dismiss()
+                        }
+
+                    })}
+                    urgencyText.movementMethod = LinkMovementMethod.getInstance()
+                    dialogView.setTag(3)
+                    okBut.visibility = View.INVISIBLE
+                    cancelBut.visibility = View.INVISIBLE
+//                    context?.let {
+//                        Tool.get().call(
+//                            it,
+//                            context.getString(R.string.emergencyCall)
+//                        )
+//                    }
+
+                }
+
+            }
+        }
+    }
+
 
 
     companion object {

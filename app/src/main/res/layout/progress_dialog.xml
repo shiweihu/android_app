@@ -9,12 +9,13 @@
         android:id="@+id/home_loading_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/rectange_corner_alpha"
         >
         <ImageView
             android:id="@+id/progress_dialog_img"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:src="@mipmap/progress"/>
+            android:background="@mipmap/progress_img"/>
 
         <TextView
             android:id="@+id/progress_dialog_txt"

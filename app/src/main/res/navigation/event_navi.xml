@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/event_navi"
+    app:startDestination="@id/list_event_fragment">
+
+    <fragment
+        android:id="@+id/list_event_fragment"
+        android:name="table.activity.event_fragment.EventlistFragment"
+        android:label="@string/event_list_label"
+        tools:layout="@layout/fragment_eventlist">
+        <action
+            android:id="@+id/action_goto_detail"
+            app:destination="@id/event_detail_fragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/event_detail_fragment"
+        android:name="table.activity.event_fragment.EventDetailFragment"
+        android:label="@string/event_detail_label"
+        tools:layout="@layout/fragment_event_detail">
+        <action
+            android:id="@+id/action_goback"
+            app:destination="@id/list_event_fragment" />
+
+    </fragment>
+
+
+
+</navigation>

@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -14,7 +13,6 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import mode.menuItem
 import table.activity.*
 
 
@@ -52,11 +50,11 @@ class MenuFragment : Fragment() {
         mainactivity.closeBut?.visibility = View.VISIBLE
         mainactivity.closeBut?.setOnClickListener{ _->
             findNavController().navigate(R.id.action_MenuFragment_to_FirstFragment)
-            mainactivity.closeBut?.visibility = View.INVISIBLE
+           // mainactivity.closeBut?.visibility = View.INVISIBLE
         }
         mainactivity.title?.text = this.resources.getString(R.string.menu_list)
-        mainactivity.subtitle1?.visibility=View.INVISIBLE
-        mainactivity.subtitle2?.visibility=View.INVISIBLE
+        mainactivity.title?.visibility = View.VISIBLE
+        mainactivity.title_img?.visibility = View.INVISIBLE
     }
     private class gridItemAdapt(val fragment:Fragment,val ctx: Context, val menuText:List<String>):BaseAdapter()
     {
@@ -87,10 +85,16 @@ class MenuFragment : Fragment() {
 
                     false
                 }
-
-
-
                 view.setOnClickListener{_->
+                    val intent = Intent(fragment.activity, ResourceActivity::class.java)
+                    val b:Bundle = Bundle()
+                    b.putInt("index",position)
+                    intent.putExtras(b)
+                    fragment.activity?.startActivity(intent)
+                    fragment.activity?.overridePendingTransition(0,0)
+
+
+                    /*
                     if(position ==0)
                     {
                         val intent = Intent(fragment.activity, TabOneActivity::class.java)
@@ -142,6 +146,8 @@ class MenuFragment : Fragment() {
                         fragment.activity?.startActivity(intent)
                         fragment.activity?.overridePendingTransition(0,0)
                     }
+
+                     */
                 }
             }
 

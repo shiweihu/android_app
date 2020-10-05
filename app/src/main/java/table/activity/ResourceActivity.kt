@@ -20,7 +20,10 @@ import functions.ToolCallBack
 import mode.menuItem
 
 
-class TabTwoActivity: Activity() {
+class ResourceActivity: Activity() {
+    private var index:Int? = null
+    private lateinit var myApp:MyApplication
+    private lateinit var tab_title:TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // Inflate the layout for this fragment
@@ -29,33 +32,59 @@ class TabTwoActivity: Activity() {
         this.getWindow().setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN)
-       setContentView(R.layout.tab_2)
+       setContentView(R.layout.resource_activity_layout)
 
         findViewById<ImageButton>(R.id.act_close).setOnClickListener { _->
             super.finish()
             overridePendingTransition(0, 0);
         }
+
+        tab_title = findViewById<TextView>(R.id.tab_title)
+
+
+        myApp = this.application as MyApplication
+        index = this.intent.getIntExtra("index",0)
         var myApp =  this.application as MyApplication
-        var titleText = myApp.menuListL?.get(1)?.title
-        val url = this.getString(R.string.usage_table_request).format(titleText)
-        Http.get().doGet(url,null)
+        index?.let {
+            var titleText = myApp.menuListL?.get(it)?.title
+            val url = this.getString(R.string.usage_table_request).format(titleText)
+            Http.get().doGet(url,null)
+        }
+
         //findViewById<LinearLayout>(R.id.background_layout).background.alpha = 200
     }
     override fun onStart() {
         super.onStart()
-        var myApp = this.application as MyApplication
-        val TabTwo = myApp.menuListL?.get(1) as menuItem
+
+        val TabTwo = myApp?.menuListL?.get(index!!) as menuItem
         var tip = TabTwo?.tips
         var content = TabTwo?.content
         var title = TabTwo?.title
         title = title?.replace("\n", "")
+        val content_layout = findViewById<LinearLayout>(R.id.content_layout)
+        var validContent:Boolean = false;
+        for(i in content)
+        {
+            if(i != '\n' && i!=' '&& i!='\r')
+            {
+                validContent = true
+                break
+            }
+        }
 
-        findViewById<TextView>(R.id.tab_title).text = title
+        if(validContent)
+        {
+            content_layout.visibility = View.VISIBLE
+        }else
+        {
+            content_layout.visibility = View.GONE
+        }
+        tab_title.text = title
         findViewById<TextView>(R.id.context).text =  Tool.get().functionText(this,content , object:
             ToolCallBack
         {
             override fun clickListener(type: String) {
-                Tool.get().showTipByDiaglog(this@TabTwoActivity,tip)
+                Tool.get().showTipByDiaglog(this@ResourceActivity,tip)
             }
         })
         findViewById<TextView>(R.id.context).movementMethod  = LinkMovementMethod.getInstance()
@@ -87,39 +116,34 @@ class TabTwoActivity: Activity() {
                 val title = view.findViewById<TextView>(R.id.title_view)
                 val tag = view.findViewById<ImageView>(R.id.showUp_tag)
                 val content_text_view = view .findViewById<TextView>(R.id.content_text_view)
-                tag.tag = 0
-                //
+                val content_layout = view.findViewById<LinearLayout>(R.id.content_layout)
+                val titleLayout =  view.findViewById<RelativeLayout>(R.id.title_layout)
+                content_text_view.text =  Tool.get().functionText(ctx, ddb.content,object:ToolCallBack
+                {
+                    override fun clickListener(type: String) {
+                        Tool.get().showTipByDiaglog(ctx,ddb.tips)
+                    }
+                })
+                content_text_view.movementMethod = LinkMovementMethod.getInstance()
                 title.text = ddb.title
                 view.setOnClickListener{view->
-                    if(tag.tag == 0)
+                    if(tag.tag == "0")
                     {
-                        tag.tag = 1
-                        view.findViewById<LinearLayout>(R.id.content_layout).visibility =View.VISIBLE
-                        content_text_view.textSize = 20.0F
-                        content_text_view.text =  Tool.get().functionText(ctx, ddb.content,object:ToolCallBack
-                        {
-                             override fun clickListener(type: String) {
-                                Tool.get().showTipByDiaglog(ctx,ddb.tips)
-                            }
-                        })
-                        content_text_view.movementMethod = LinkMovementMethod.getInstance()
+                        tag.tag = "1"
+                        content_layout.visibility =View.VISIBLE
                         val anim: Animation =
                             AnimationUtils.loadAnimation(ctx, R.anim.rotate_90)
                         tag.startAnimation(anim)
-                        val titleLayout =  view.findViewById<RelativeLayout>(R.id.title_layout)
                         titleLayout.setBackgroundResource(R.drawable.rectange_corner_gray)
                         anim.fillAfter = true
                     }else
                     {
-                        tag.tag = 0
-                        view.findViewById<LinearLayout>(R.id.content_layout).visibility=View.INVISIBLE
-                        content_text_view.text = ""
-                        content_text_view.textSize = .0F
+                        tag.tag = "0"
+                        content_layout.visibility=View.GONE
                         val anim: Animation =
                             AnimationUtils.loadAnimation(ctx, R.anim.rotate_0)
                         tag.startAnimation(anim)
                         anim.fillAfter = true
-                        val titleLayout =  view.findViewById<RelativeLayout>(R.id.title_layout)
                         titleLayout.setBackgroundResource(R.drawable.rectange_corner_white)
                     }
                 }
@@ -131,3 +155,4 @@ class TabTwoActivity: Activity() {
     }
 
 }
+

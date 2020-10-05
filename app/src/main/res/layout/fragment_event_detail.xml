@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@mipmap/title_image">
+
+        <ImageButton
+            android:id="@+id/act_close"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="25dp"
+            android:background="@mipmap/close" />
+
+        <TextView
+            android:id="@+id/tab_title"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="title"
+            android:textColor="@color/colorWhite"
+            android:textSize="30sp" />
+    </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/background"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/view_page"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectange_corner_white"
+                android:layout_margin="5dp"
+                android:elevation="5dp"
+                >
+                <TextView
+                    android:id="@+id/event_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:gravity="top"
+                    android:textStyle="bold"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectange_corner_white"
+                android:layout_margin="5dp"
+                android:elevation="5dp"
+                >
+                <TextView
+                    android:id="@+id/date_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date_lab"
+                    android:layout_marginLeft="5dp"
+                    android:layout_alignParentTop="true"
+                    android:textSize="20sp"
+                    />
+                <TextView
+                    android:id="@+id/date_view"
+                    android:layout_toRightOf="@+id/date_lable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_alignParentTop="true"
+                    android:textSize="20sp"
+                    android:textColor="@color/colorBlack"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectange_corner_white"
+                android:layout_margin="5dp"
+                android:elevation="5dp"
+                >
+                <TextView
+                    android:id="@+id/venue_lab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_centerVertical="true"
+                    android:text="@string/venue_lab"
+                    android:textSize="20sp"
+                    />
+                <TextView
+                    android:id="@+id/venue_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/venue_lab"
+                    android:layout_marginLeft="5dp"
+                    android:layout_centerVertical="true"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rectange_corner_white"
+                android:layout_margin="5dp"
+                android:elevation="5dp"
+                >
+                <TextView
+                    android:id="@+id/rsvp_lab"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_centerVertical="true"
+                    android:text="@string/rsvp_lab"
+                    android:textSize="20sp"
+                    />
+                <TextView
+                    android:id="@+id/rsvp_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/rsvp_lab"
+                    android:layout_marginLeft="5dp"
+                    android:layout_centerVertical="true"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    />
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                >
+                <Button
+                    android:id="@+id/join_but"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/join"/>
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+
+
+    </ScrollView>
+
+
+
+</LinearLayout>

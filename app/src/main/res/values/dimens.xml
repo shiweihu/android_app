@@ -3,30 +3,47 @@
     <string-array name="gender">
         <item>male</item>
         <item>female</item>
-        <item>others</item>
+        <item>Non-binary</item>
+        <item>Rather Not Say</item>
     </string-array>
 
     <string-array name="ageGroup">
-        <item>under 30</item>
-        <item>30 - 45</item>
-        <item>46 - 60</item>
-        <item>Over 60</item>
+        <item>18 - 35</item>
+        <item>36 - 50</item>
+        <item>51 - 66</item>
+        <item>66 or above</item>
     </string-array>
 
     <string-array name="grid_icon_array">
-        <item >during_crisis</item>
-        <item >the_next_step</item>
-        <item >involving_yourself</item>
-        <item >hospital_admissions</item>
-        <item >healthcare_rights_and_complaints</item>
-        <item >complaints_in_the_mental_health_setting</item>
-        <item >carers_crisis_plan</item>
-        <item >after_crisis</item>
-        <item >resources</item>
-        <item >private_health_insurance</item>
+        <item>during_crisis</item>
+        <item>the_next_step</item>
+        <item>hospital_admissions</item>
+        <item>healthcare_rights_and_complaints</item>
+        <item>after_crisis</item>
+        <item>useful_contact</item>
+        <item>financial_and_legal</item>
+        <item>private_health_insurance</item>
         <!-- as many more as your heart desires -->
     </string-array>
 
+    <string-array name="crisis_plan_date">
+        <item>My Crisis Plan</item>
+        <item>
+People can still experience a crisis when they have utilised the best resources available.
 
+Formulate a plan of action before the crisis happens - wherever possible, involve the person who has a mental health condition in this plan.
+</item>
+        <item>Identify people willing to help</item>
+        <item>Listing phone numbers of the mental health providers and the mental health crisis team</item>
+        <item>Listing current medications and their dosages</item>
+        <item>Treatments that have been used in the past</item>
+        <item>Identify key words or calming techniques that have worked in the past</item>
+        <item>Identify preferred treatment facilities</item>
+        <item>Talk with others in the household about how to stay safe during a crisis.</item>
+        <item>Samples of a Crisis Plan and a Carer Plan are available on the ARAFMI website ${type=2|title=www.arafmiillawarra.org.au/crisis-information|content=http://www.arafmiillawarra.org.au/crisis-information|typeface=NORMAL|fontcolor=#1E90FF}
+</item>
+        <!-- as many more as your heart desires -->
+    </string-array>
 
+    <dimen name="text_margin">16dp</dimen>
 </resources>

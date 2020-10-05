@@ -18,9 +18,13 @@ import java.net.URL
 interface Response {
     fun notification(s: String?)
 }
+interface Response_binary
+{
+    fun notification(inputS: InputStream?)
+}
 
 class Http {
-    private data class SocketPack constructor(var response: Response?, var strData: String?)
+    private data class SocketPack constructor(var response: Response?,var response_binary:Response_binary?, var strData: String?,val inputS: InputStream?)
     {
 
     }
@@ -29,6 +33,12 @@ class Http {
     private val handler = Handler { msg->
         var socketPack = msg.obj as SocketPack
         socketPack?.response?.notification(socketPack.strData)
+        dialog?.dismiss()
+        false
+    }
+    private val handler_binary = Handler { msg->
+        var socketPack = msg.obj as SocketPack
+        socketPack?.response_binary?.notification(socketPack.inputS)
         dialog?.dismiss()
         false
     }
@@ -43,22 +53,48 @@ class Http {
 //        }
 //    }
 
+    fun doGetBinary(httpurl: String,responseBinary: Response_binary)
+    {
+        ThreadManager.get().execute(Runnable {
+            val result = requestBinary(httpurl)
+            var message = Message()
+            message.obj = SocketPack(null,responseBinary,null,result)
+            handler_binary.sendMessage(message)
+        })
+    }
 
     fun doGet(httpurl: String, response: Response?) {
-
-
         ThreadManager.get().execute(Runnable {
             val result = request(httpurl)
             var message = Message()
-            message.obj = SocketPack(response, result)
+            message.obj = SocketPack(response,null, result,null)
             handler.sendMessage(message)
         })
     }
+
     fun doGetWithDialog(context: Context, httpurl: String, response: Response?)
     {
         dialog = ProgersssDialog(context)
         dialog?.show()
         doGet(httpurl, response)
+    }
+
+    private fun requestBinary(httpurl: String):InputStream?
+    {
+        var connection: HttpURLConnection? = null
+        val url = URL(httpurl)
+        connection = url.openConnection() as HttpURLConnection
+        connection!!.requestMethod = "GET"
+        connection.connectTimeout = 15000
+        connection.readTimeout = 60000
+        connection.instanceFollowRedirects = false
+        connection.connect()
+        val responseCode = connection.responseCode
+        if (responseCode == 200)
+        {
+          return connection.inputStream;
+        }
+        return null
     }
 
     private fun request(httpurl: String): String? {
@@ -81,7 +117,7 @@ class Http {
                 val sbf = StringBuffer()
                 var temp: String? = null
                 while (br.readLine().also { temp = it } != null) {
-                    if(sbf.isNotEmpty())
+                    if(sbf.isNotEmpty() && temp?.isNotEmpty() ?:false )
                     {
                         sbf.append("\r\n")
                     }

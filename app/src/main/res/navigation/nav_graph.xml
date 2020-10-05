@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_MenuFragment"
             app:destination="@id/MenuFragment" />
+        <action
+            android:id="@+id/action_FirstFragment_to_tipsFragment"
+            app:destination="@id/tipsFragment" />
     </fragment>
 
     <fragment
@@ -22,8 +25,17 @@
         <action
             android:id="@+id/action_MenuFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
-
-
     </fragment>
+
+    <fragment
+        android:id="@+id/tipsFragment"
+        android:name="com.example.myapplication.TipsFragment"
+        tools:layout="@layout/fragment_tips">
+        <action
+            android:id="@+id/action_TipsFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+
+
 
 </navigation>

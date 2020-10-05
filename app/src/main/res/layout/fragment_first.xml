@@ -25,7 +25,7 @@
              android:layout_width="match_parent"
              android:layout_height="80dp"
              android:layout_marginLeft="10dp"
-             android:layout_marginTop="100dp"
+             android:layout_marginTop="30dp"
              android:layout_marginRight="10dp"
              android:background="@drawable/rectange_corner_alpha"
              android:radius="2dp">
@@ -115,12 +115,79 @@
          </RelativeLayout>
 
          <RelativeLayout
+             android:id="@+id/cresis_plan"
+             android:layout_width="match_parent"
+             android:layout_height="80dp"
+             android:layout_marginTop="20dp"
+             android:layout_marginLeft="10dp"
+             android:layout_marginRight="10dp"
+
+             android:background="@drawable/rectange_corner_alpha"
+             >
+             <ImageButton
+                 android:id="@+id/crisis_plan_but"
+                 android:layout_width="70dp"
+                 android:layout_height="70dp"
+                 android:layout_centerVertical="true"
+                 android:layout_marginLeft="5dp"
+                 android:background="@mipmap/crisis_plan">
+
+             </ImageButton>
+             <TextView
+                 android:id="@+id/crisis_plan_lab"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_toRightOf="@+id/crisis_plan_but"
+                 android:layout_centerVertical="true"
+                 android:layout_marginLeft="0dp"
+                 android:text="@string/crisis_plan_lab"
+                 android:textColor="@color/colorBlack"
+                 android:textSize="20sp"
+
+                 />
+         </RelativeLayout>
+
+         <RelativeLayout
+             android:id="@+id/come_up"
+             android:layout_width="match_parent"
+             android:layout_height="80dp"
+             android:layout_marginTop="20dp"
+             android:layout_marginLeft="10dp"
+             android:layout_marginRight="10dp"
+             android:background="@drawable/rectange_corner_alpha"
+             >
+             <ImageButton
+                 android:id="@+id/what_come_up_but"
+                 android:layout_width="40dp"
+                 android:layout_height="40dp"
+                 android:layout_centerVertical="true"
+                 android:layout_marginLeft="20dp"
+                 android:background="@mipmap/what_on">
+
+             </ImageButton>
+             <TextView
+                 android:id="@+id/come_up_title"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_toRightOf="@+id/what_come_up_but"
+                 android:layout_centerVertical="true"
+                 android:layout_marginLeft="20dp"
+                 android:text="@string/come_up"
+                 android:textColor="@color/colorBlack"
+                 android:textSize="20sp"
+
+                 />
+         </RelativeLayout>
+
+
+         <RelativeLayout
              android:id="@+id/contact_us"
              android:layout_width="match_parent"
              android:layout_height="80dp"
              android:layout_marginTop="20dp"
              android:layout_marginLeft="10dp"
              android:layout_marginRight="10dp"
+             android:layout_marginBottom="30dp"
              android:background="@drawable/rectange_corner_alpha"
              >
              <ImageButton
@@ -145,6 +212,7 @@
 
                  />
          </RelativeLayout>
+
 
 
      </LinearLayout>

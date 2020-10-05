@@ -20,16 +20,46 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="table.activity.ContactUs"></activity>
-        <activity android:name="table.activity.carer_tips" />
-        <activity android:name="table.activity.TabTenActivity" />
-        <activity android:name="table.activity.TabNineActivity" />
-        <activity android:name="table.activity.TabEightActivity" />
-        <activity android:name="table.activity.TabSevenActivity" />
-        <activity android:name="table.activity.TabSixActivity" />
-        <activity android:name="table.activity.TabFiveActivity" />
-        <activity android:name="table.activity.TabFourActivity" />
-        <activity android:name="table.activity.TabThreeActivity" />
+        <activity
+            android:name="table.activity.EventActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name="table.activity.ContactUs"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name="table.activity.TabTenActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name="table.activity.TabNineActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name="table.activity.TabEightActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name="table.activity.TabSevenActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name="table.activity.TabSixActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name="table.activity.TabFiveActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name="table.activity.TabFourActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity android:name="table.activity.TabThreeActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -47,7 +77,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name="table.activity.TabTwoActivity"
+            android:name="table.activity.ResourceActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />

@@ -29,6 +29,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
             android:background="@mipmap/show_up"
+            android:tag="0"
             />
 
     </RelativeLayout>
@@ -37,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/rectange_corner_white"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:layout_below="@+id/title_layout"
         >
         <TextView
@@ -46,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:textSize="0sp"
+            android:textSize="20sp"
             android:textColor="@color/colorBlack"
             android:lineSpacingExtra="5dp"
             />

@@ -3,6 +3,8 @@
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
+    <string name="event_list_label">event list</string>
+    <string name="event_detail_label">event detail</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
@@ -10,25 +12,36 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
-    <string name="CALL_TITLE">Mental Health Crisis</string>
-    <string name="menu_list">Carers Resources</string>
-    <string name="tips">Carers Tips</string>
+    <string name="CALL_TITLE">In Crisis</string>
+    <string name="event_title">Event Lists</string>
+    <string name="event_join_dialog_title">please fill in your information</string>
+
+    <string name="menu_list">Resources</string>
+    <string name="tips">Tips</string>
     <string name="contact_us">Contact Us</string>
+    <string name="come_up"> What\'s On</string>
+    <string name="crisis_plan_lab">My Crisis Plan</string>
     <string name="cancelBut">NO</string>
+    <string name="cancel">cancel</string>
     <string name="okBut">YES</string>
     <string name="smt">send email</string>
     <string name="contact_us_hint">please,input what you want to tell to us</string>
-    <string name="contact_us_email">sh087@uowmail.edu.au</string>
+    <string name="contact_us_email">arafmi-carers@onedoor.org.au</string>
     <string name="contact_title">contact Us</string>
-    <string name="urgencyText1">Are there safety concerns for you or others?</string>
-    <string name="urgencyText2">Are there immediate concerns for the person in Crisis?</string>
-    <string name="urgencyText3">You need to stay with your loved one and call 000 immediately and ask for an Ambulance</string>
-    <string name="urgencyText4">You can stay with your loved one until you establish ${type=100|title=the next step|content= |typeface=ITALIC|fontcolor=#000000}.</string>
+    <string name="urgencyText1">Are you in danger?</string>
+    <string name="urgencyText2">Is violence or aggression present?</string>
+    <string name="urgencyText3">Are there safety concerns for you or others?</string>
+    <string name="urgencyText4">You need to move yourself and anyone else that is at risk of harm and call ${type=1|title=000|content=000|typeface=ITALIC|fontcolor=#000000}.</string>
+    <string name="urgencyText5">Are there immediate concerns for the person in crisis?</string>
+    <string name="urgencyText6">Please go to ${type=100|title=the next step|content= |typeface=ITALIC|fontcolor=#000000}.</string>
     <string name="shareFile">HealthCarerShareFile</string>
     <string name="recordTitlepostcode">Postcode:</string>
     <string name="recordTitleGender">Gender:</string>
     <string name="recordTitleAge">Age:</string>
     <string name="submitButText">Submit</string>
+    <string name="save_but_text">Save</string>
+
+    <string name="join">join</string>
     <string name="title">ARAFMI ILLAWARRA</string>
     <string name="title1">Mental Health Carers</string>
     <string name="title2">caring for carers</string>
@@ -41,8 +54,16 @@
     <string name="tab1_but2_text">Resource For Carers</string>
     <string name="download_title">full manual</string>
     <string name="toast_input_name">please,input your name</string>
+    <string name="toast_input_number">please,input your phone number</string>
     <string name="toast_input_message">please,input the message</string>
     <string name="progressbar_dialog_txt">connect..</string>
+    <string name="date_lab">date and time:</string>
+    <string name="venue_lab">Venue:</string>
+    <string name="rsvp_lab">RSVP:</string>
+    <string name="name_lab">Name:</string>
+    <string name="create_plan_successfully">Edit Successfully</string>
+    <string name="create_plan_unsuccessfully">Edit Unsuccessfully</string>
+    <string name="phone_lab">Phone Mumber:</string>
     <string name="contact_description">If you would like more information on supporting someone with who is struggling with their mental health, please contact us on
 Mental Health Carers ARAFMI Illawarra
 17 Princes Highway
@@ -52,17 +73,29 @@ arafmi-carers@onedoor.org.au</string>
 
     <!-- 118.178.93.45:8080 -->
 
-    <string name="url_download_full_manual">http://118.178.93.45:8080/ARAFMIServe/downloadServlet?filename=FULL_FILE.pdf</string>
-    <string name="url_submit_info">http://118.178.93.45:8080/ARAFMIServe/privateInfo?gender=%s&amp;Age=%s&amp;postcode=%s</string>
-    <string name="url_menu_list">http://118.178.93.45:8080/ARAFMIServe/MenuContextServlet?versions=%s</string>
-    <string name="usage_table_request">http://118.178.93.45:8080/ARAFMIServe/UsageTabRecord?tablename=%s</string>
-    <string name="usage_number_record_request">http://118.178.93.45:8080/ARAFMIServe/UsagePhoneCallsServlet?number=%s</string>
+           <string name="url_download_full_manual">http://118.178.93.45:8080/ARAFMIServe/downloadServlet?filename=FULL_FILE.pdf</string>
+           <string name="url_submit_info">http://118.178.93.45:8080/ARAFMIServe/privateInfo?gender=%s&amp;Age=%s&amp;postcode=%s</string>
+           <string name="url_menu_list">http://118.178.93.45:8080/ARAFMIServe/MenuContextServlet?versions=%s</string>
+           <string name="usage_table_request">http://118.178.93.45:8080/ARAFMIServe/UsageTabRecord?tablename=%s</string>
+           <string name="usage_number_record_request">http://118.178.93.45:8080/ARAFMIServe/UsagePhoneCallsServlet?number=%s</string>
+           <string name="select_events">http://118.178.93.45:8080/ARAFMIServe/SelectAllEventServlet?uuid=%s</string>
+           <string name="image_url">http://118.178.93.45:8080/ARAFMIServe/ImageDataServlet?fileName=%s</string>
+           <string name="join_event_url">http://118.178.93.45:8080/ARAFMIServe/JoinEventServlet?type=%s&amp;eid=%s&amp;uuid=%s&amp;name=%s&amp;phone=%s</string>
+           <string name="tips_url">http://118.178.93.45:8080/ARAFMIServe/TipsServlet</string>
+
 
     <!--
-        <string name="url_download_full_manual">http://10.0.2.2:8080/ARAFMIServe/downloadServlet?filename=FULL_FILE.pdf</string>
-        <string name="url_submit_info">http://10.0.2.2:8080/ARAFMIServe/privateInfo?gender=%s&amp;Age=%s&amp;postcode=%s</string>
-        <string name="url_menu_list">http://10.0.2.2:8080/ARAFMIServe/MenuContextServlet?versions=%s</string>
-        <string name="usage_table_request">http://10.0.2.2:8080/ARAFMIServe/UsageTabRecord?tablename=%s</string>
-        <string name="usage_number_record_request">http://10.0.2.2:8080/ARAFMIServe/UsagePhoneCallsServlet?number=%s</string>
-          -->
-    </resources>
+                    <string name="url_download_full_manual">http://10.0.2.2:8080/ARAFMIServe/downloadServlet?filename=FULL_FILE.pdf</string>
+                    <string name="url_submit_info">http://10.0.2.2:8080/ARAFMIServe/privateInfo?gender=%s&amp;Age=%s&amp;postcode=%s</string>
+                    <string name="url_menu_list">http://10.0.2.2:8080/ARAFMIServe/MenuContextServlet?versions=%s</string>
+                    <string name="usage_table_request">http://10.0.2.2:8080/ARAFMIServe/UsageTabRecord?tablename=%s</string>
+                    <string name="usage_number_record_request">http://10.0.2.2:8080/ARAFMIServe/UsagePhoneCallsServlet?number=%s</string>
+
+                    <string name="select_events">http://10.0.2.2:8080/ARAFMIServe/SelectAllEventServlet?uuid=%s</string>
+                    <string name="image_url">http://10.0.2.2:8080/ARAFMIServe/ImageDataServlet?fileName=%s</string>
+                    <string name="join_event_url">http://10.0.2.2:8080/ARAFMIServe/JoinEventServlet?type=%s&amp;eid=%s&amp;uuid=%s&amp;name=%s&amp;phone=%s</string>
+                    <string name="tips_url">http://10.0.2.2:8080/ARAFMIServe/TipsServlet</string>
+
+      -->
+
+</resources>

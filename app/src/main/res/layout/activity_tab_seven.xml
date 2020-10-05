@@ -20,8 +20,8 @@
 
             <ImageButton
                 android:id="@+id/act_close"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="25dp"
                 android:background="@mipmap/close" />
@@ -180,5 +180,21 @@
             android:textColor="@color/colorBlack"
             />
         </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/submit_but"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save_but_text"
+                android:layout_centerHorizontal="true"
+                />
+
+        </RelativeLayout>
+
+
     </LinearLayout>
+
+
 </View.StickyScrollView>

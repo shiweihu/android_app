@@ -13,6 +13,9 @@ open class SharedPreferencesUtils(context: Context) {
     var Firstflag by SharedPreferenceDelegates.boolean()
     var MenuListVersion by SharedPreferenceDelegates.int()
     var MenuListData by SharedPreferenceDelegates.string()
+    var UUID by  SharedPreferenceDelegates.string()
+    
+    
     private object SharedPreferenceDelegates {
         fun boolean(defaultValue: Boolean = false) =
             object : ReadWriteProperty<SharedPreferencesUtils, Boolean> {
